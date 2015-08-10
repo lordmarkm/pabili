@@ -1,15 +1,15 @@
 require.config({
   paths: {
-    'angular': 'lib/angular/angular',
+    'angular': 'lib/angular/angular.min',
     'angular-animate': 'lib/angular-animate/angular-animate.min',
-    'angular-ui-router': 'lib/angular-ui-router/release/angular-ui-router',
+    'angular-ui-router': 'lib/angular-ui-router/release/angular-ui-router.min',
     'angular-resource': 'lib/angular-resource/angular-resource.min',
     'angular-ngtable': 'lib/ng-table/dist/ng-table.min',
-    'angular-ui-select': 'lib/angular-ui-select/dist/select',
+    'angular-ui-select': 'lib/angular-ui-select/dist/select.min',
     'angular-sanitize': 'lib/angular-sanitize/angular-sanitize.min',
     'angular-bootstrap': 'lib/angular-bootstrap/ui-bootstrap-tpls.min',
-    'toaster': 'lib/angularjs-toaster/toaster',
-    'bootstrap': 'lib/bootstrap/dist/js/bootstrap',
+    'toaster': 'lib/angularjs-toaster/toaster.min',
+    'bootstrap': 'lib/bootstrap/dist/js/bootstrap.min',
     'jquery': 'lib/jquery/dist/jquery.min',
     'metisMenu': 'lib/metisMenu/dist/metisMenu.min',
     'moment': 'lib/moment/min/moment.min',
@@ -70,7 +70,9 @@ require([
     'bootstrap',
     'metisMenu',
     'moment',
-    'angular-moment'
+    'angular-moment',
+    'core/core.module.js',
+    'browse/browse.module.js'
   ], function (angular) {
   angular.element().ready(function () {
     angular.bootstrap(document, [
@@ -82,7 +84,9 @@ require([
       'ngSanitize',
       'ui.bootstrap',
       'toaster',
-      'angularMoment'
+      'angularMoment',
+      'core.module',
+      'browse.module'
     ]);
   });
 });

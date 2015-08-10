@@ -10,6 +10,8 @@
   <modules>
     <module>pabili-core</module>
     <module>pabili-web</module>
+    <module>pabili-postings</module>
+    <module>pabili-commons</module>
   </modules>
 
   <properties>
@@ -33,6 +35,11 @@
   <dependencyManagement>
     <dependencies>
       <!-- Project -->
+      <dependency>
+        <groupId>pabili</groupId>
+        <artifactId>pabili-commons</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>pabili</groupId>
         <artifactId>pabili-core-model</artifactId>

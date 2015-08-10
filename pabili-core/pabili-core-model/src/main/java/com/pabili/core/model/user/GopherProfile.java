@@ -1,4 +1,4 @@
-package com.pabili.core.model;
+package com.pabili.core.model.user;
 
 import java.math.BigDecimal;
 

@@ -10,6 +10,12 @@
   <name>Pabili :: Core :: Model</name>
 
   <dependencies>
+    <!-- PROJECT -->
+    <dependency>
+      <groupId>pabili</groupId>
+      <artifactId>pabili-commons</artifactId>
+    </dependency>
+
     <!-- HIBERNATE -->
     <dependency>
       <groupId>org.hibernate</groupId>
