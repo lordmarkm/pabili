@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 
 import com.pabili.commons.comments.Commentable;
 import com.pabili.commons.comments.CommentableType;
-import com.pabili.core.model.user.GeneralProfile;
+import com.pabili.core.model.user.UserProfile;
 
 /**
  * Postings are buyer-initiated transactions
@@ -17,30 +17,30 @@ public class Posting implements Commentable {
 
     @ManyToOne
     @JoinColumn(name = "buyer_id")
-    private GeneralProfile buyer;
+    private UserProfile buyer;
 
     @ManyToOne
     @JoinColumn(name = "gopher_id")
-    private GeneralProfile gopher;
+    private UserProfile gopher;
 
     @Override
     public CommentableType getCommentableType() {
         return CommentableType.POSTING;
     }
 
-    public GeneralProfile getBuyer() {
+    public UserProfile getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(GeneralProfile buyer) {
+    public void setBuyer(UserProfile buyer) {
         this.buyer = buyer;
     }
 
-    public GeneralProfile getGopher() {
+    public UserProfile getGopher() {
         return gopher;
     }
 
-    public void setGopher(GeneralProfile gopher) {
+    public void setGopher(UserProfile gopher) {
         this.gopher = gopher;
     }
 

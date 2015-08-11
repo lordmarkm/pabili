@@ -9,10 +9,69 @@
   <artifactId>pabili-core-service</artifactId>
   <name>Pabili :: Core :: Service</name>
 
+  <properties>
+    <db.username>root</db.username>
+    <db.password>root</db.password>
+    <db.dialect>org.hibernate.dialect.MySQL5Dialect</db.dialect>
+    <db.url>jdbc:mysql://localhost:3306/pabili</db.url>
+    <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+    <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
+    <hibernate.hbm2ddl.import_files></hibernate.hbm2ddl.import_files>
+    <reload.csv>false</reload.csv>
+  </properties>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
+
   <dependencies>
+    <!-- Project -->
     <dependency>
       <groupId>pabili</groupId>
       <artifactId>pabili-core-model</artifactId>
+    </dependency>
+
+    <!-- SPRING -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+    </dependency>
+
+    <!-- HIBERNATE -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+
+    <!-- PERSISTENCE -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+    </dependency>
+
+    <!-- LOGGING -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+
+    <!-- COMMONS -->
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
     </dependency>
   </dependencies>
 </project>

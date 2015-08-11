@@ -1,19 +1,17 @@
-package com.pabili.core.model.user;
+package com.pabili.commons.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+public class CompleteRegistrationForm {
 
-import com.pabili.core.model.base.BaseEntity;
-
-@Entity(name = "user")
-public class User extends BaseEntity {
-
-    @Column(name = "username", nullable = false)
+    private String registrationToken;
     private String username;
-
-    @Column(name = "password", nullable = false)
     private String password;
 
+    public String getRegistrationToken() {
+        return registrationToken;
+    }
+    public void setRegistrationToken(String registrationToken) {
+        this.registrationToken = registrationToken;
+    }
     public String getUsername() {
         return username;
     }

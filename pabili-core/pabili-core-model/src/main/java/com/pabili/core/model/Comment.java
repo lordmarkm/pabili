@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.pabili.commons.comments.CommentableType;
 import com.pabili.core.model.base.BaseEntity;
-import com.pabili.core.model.user.GeneralProfile;
+import com.pabili.core.model.user.UserProfile;
 
 @Entity(name = "comment")
 public class Comment extends BaseEntity {
@@ -23,7 +23,7 @@ public class Comment extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "poster_id")
-    private GeneralProfile poster;
+    private UserProfile poster;
 
     @Column(name = "text", length = 2000)
     private String text;
@@ -44,11 +44,11 @@ public class Comment extends BaseEntity {
         this.parentType = parentType;
     }
 
-    public GeneralProfile getPoster() {
+    public UserProfile getPoster() {
         return poster;
     }
 
-    public void setPoster(GeneralProfile poster) {
+    public void setPoster(UserProfile poster) {
         this.poster = poster;
     }
 

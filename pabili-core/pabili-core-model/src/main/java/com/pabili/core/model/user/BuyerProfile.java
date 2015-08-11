@@ -11,13 +11,13 @@ public class BuyerProfile {
     /**
      * Balance pending incomplete transactions
      */
-    @Column(name = "BUY_PEND_BAL")
+    @Column(name = "buy_pend_bal")
     private BigDecimal pendingBalance;
     
-    @Column(name = "BUY_AV_BAL")
+    @Column(name = "buy_av_bal")
     private BigDecimal availableBalance;
 
-    @Column(name = "BUY_TOTAL_TRANS")
+    @Column(name = "buy_total_trans")
     private long totalTransactions;
 
     public BigDecimal getPendingBalance() {

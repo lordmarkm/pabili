@@ -8,15 +8,15 @@ import javax.persistence.OneToOne;
 
 import com.pabili.core.model.base.BaseEntity;
 
-@Entity(name = "general_profile")
-public class GeneralProfile extends BaseEntity {
+@Entity(name = "user_profile")
+public class UserProfile extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(name = "email", nullable = false)
-    private String email_address;
+    private String email;
 
     @Embedded
     private BuyerProfile buyerProfile;
@@ -30,14 +30,6 @@ public class GeneralProfile extends BaseEntity {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public String getEmail_address() {
-        return email_address;
-    }
-
-    public void setEmail_address(String email_address) {
-        this.email_address = email_address;
     }
 
     public BuyerProfile getBuyerProfile() {
@@ -54,6 +46,14 @@ public class GeneralProfile extends BaseEntity {
 
     public void setGopherProfile(GopherProfile gopherProfile) {
         this.gopherProfile = gopherProfile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

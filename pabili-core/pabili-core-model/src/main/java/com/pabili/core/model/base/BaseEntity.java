@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.hibernate.annotations.Type;
+
 /**
  * The Grandfather of every entity from now on.
  * @author mbmartinez
@@ -17,7 +19,8 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.TABLE)
     protected Long id;
 
-    @Column(name = "DELETED")
+    @Column(name = "deleted")
+    @Type(type = "yes_no")
     protected boolean deleted = false;
 
     public Long getId() {

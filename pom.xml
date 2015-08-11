@@ -12,6 +12,7 @@
     <module>pabili-web</module>
     <module>pabili-postings</module>
     <module>pabili-commons</module>
+    <module>pabili-security</module>
   </modules>
 
   <properties>
@@ -23,13 +24,21 @@
     <!-- Hibernate -->
     <hibernate.version>4.1.9.Final</hibernate.version>
 
+    <!-- Persistence -->
+    <spring.data.jpa.version>1.5.1.RELEASE</spring.data.jpa.version>
+    <mysql.connector.version>5.1.23</mysql.connector.version>
+    <c3p0.version>0.9.2.1</c3p0.version>
+    <querydsl.version>3.4.1</querydsl.version>
+
     <!-- Temporal -->
     <joda.version>2.2</joda.version>
 
-    <!-- Query DSL -->
-    <querydsl.version>3.4.1</querydsl.version>
+    <!-- Logging -->
+    <logback.version>1.0.9</logback.version>
 
+    <!-- Utilities -->
     <guava.version>17.0</guava.version>
+    <commons.lang.version>2.3</commons.lang.version>
   </properties>
 
   <dependencyManagement>
@@ -54,6 +63,11 @@
       <!-- Spring -->
       <dependency>
         <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc</artifactId>
         <version>${spring.version}</version>
       </dependency>
@@ -63,6 +77,23 @@
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>
         <version>${hibernate.version}</version>
+      </dependency>
+
+      <!-- Persistence -->
+      <dependency>
+        <groupId>org.springframework.data</groupId>
+        <artifactId>spring-data-jpa</artifactId>
+        <version>${spring.data.jpa.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.connector.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mchange</groupId>
+        <artifactId>c3p0</artifactId>
+        <version>${c3p0.version}</version>
       </dependency>
 
       <!-- Temporal -->
@@ -84,6 +115,19 @@
         <version>${querydsl.version}</version>
       </dependency>
 
+      <!-- Logging -->
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback.version}</version>
+      </dependency>
+
+      <!-- Utilities -->
+      <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>${commons.lang.version}</version>
+      </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
