@@ -30,25 +30,26 @@ public class RegistrationResource {
     public ModelAndView registerEmail(EmailRegistrationForm registrationForm) {
         OperationResult result = userProfileService.createRegistrationToken(registrationForm);
         if (result == SUCCESS) {
-            return new ModelAndView("registration_success");
+            return new ModelAndView("registration/view/registration_success");
         } else if (result == DUPLICATE){
-            return new ModelAndView("registration_duplicate");
+            return new ModelAndView("registration/view/registration_duplicate");
         } else {
             throw new IllegalStateException("Registration was neither a success or duplicate");
         }
     }
 
-    @RequestMapping(value = "/{token}", method = GET)
+    @RequestMapping(value = "/consume_token/{token}", method = GET)
     public ModelAndView consumeRegistrationToken(@PathVariable String token) {
         RegistrationToken registrationToken = registrationTokenService.findByToken(token);
         if (null != registrationToken) {
-            return new ModelAndView("complete_registration")
+            return new ModelAndView("registration/view/complete_registration")
                 .addObject("token", registrationToken);
         } else {
-            return new ModelAndView("registration_token_not_found");
+            return new ModelAndView("registration/view/registration_token_not_found");
         }
     }
 
+    @RequestMapping(value = "/complete")
     public ModelAndView completeRegistration(CompleteRegistrationForm registrationForm) {
         return null;
     }

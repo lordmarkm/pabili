@@ -10,10 +10,12 @@ import com.pabili.commons.operations.OperationResult;
 import com.pabili.core.model.user.RegistrationToken;
 import com.pabili.core.service.RegistrationTokenService;
 import com.pabili.core.service.UserProfileService;
+import com.pabili.core.service.custom.UserProfileServiceCustom;
+
 import static com.pabili.commons.operations.OperationResult.*;
 
 @Transactional
-public class UserProfileServiceCustomImpl {
+public class UserProfileServiceCustomImpl implements UserProfileServiceCustom {
 
     @Autowired
     private UserProfileService service;
@@ -21,7 +23,8 @@ public class UserProfileServiceCustomImpl {
     @Autowired
     private RegistrationTokenService registrationTokenService;
 
-    public OperationResult register(EmailRegistrationForm registrationForm) {
+    @Override
+    public OperationResult createRegistrationToken(EmailRegistrationForm registrationForm) {
         String email = registrationForm.getEmail();
         if (null != service.findByEmail(email)) {
             return DUPLICATE;
