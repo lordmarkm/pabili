@@ -16,6 +16,10 @@
       <groupId>pabili</groupId>
       <artifactId>pabili-core-service</artifactId>
     </dependency>
+    <dependency>
+      <groupId>pabili</groupId>
+      <artifactId>pabili-security-service</artifactId>
+    </dependency>
 
     <!-- Spring -->
     <dependency>

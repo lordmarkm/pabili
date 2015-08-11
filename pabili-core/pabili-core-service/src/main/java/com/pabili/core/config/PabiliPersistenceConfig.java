@@ -21,6 +21,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -32,6 +33,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
         "com.pabili.core.service"
 }, repositoryImplementationPostfix = "CustomImpl")
 @PropertySource({"classpath:db.properties"})
+@EnableTransactionManagement
 public class PabiliPersistenceConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(PabiliPersistenceConfig.class);

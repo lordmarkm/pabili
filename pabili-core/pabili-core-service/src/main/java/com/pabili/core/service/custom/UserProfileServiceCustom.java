@@ -1,10 +1,10 @@
 package com.pabili.core.service.custom;
 
 import com.pabili.commons.dto.EmailRegistrationForm;
-import com.pabili.commons.operations.OperationResult;
+import com.pabili.core.model.user.RegistrationToken;
 
 public interface UserProfileServiceCustom {
 
-    OperationResult createRegistrationToken(EmailRegistrationForm registrationForm);
+    RegistrationToken createRegistrationToken(EmailRegistrationForm registrationForm);
 
 }

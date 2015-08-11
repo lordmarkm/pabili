@@ -14,6 +14,8 @@ import com.pabili.commons.operations.OperationResult;
 import com.pabili.core.model.user.RegistrationToken;
 import com.pabili.core.service.RegistrationTokenService;
 import com.pabili.core.service.UserProfileService;
+import com.pabili.core.service.custom.PabiliMailSender;
+
 import static com.pabili.commons.operations.OperationResult.*;
 
 @Controller
@@ -26,15 +28,17 @@ public class RegistrationResource {
     @Autowired
     private RegistrationTokenService registrationTokenService;
 
+    @Autowired
+    private PabiliMailSender mailSender;
+
     @RequestMapping(method = POST)
     public ModelAndView registerEmail(EmailRegistrationForm registrationForm) {
-        OperationResult result = userProfileService.createRegistrationToken(registrationForm);
-        if (result == SUCCESS) {
+        RegistrationToken registrationToken = userProfileService.createRegistrationToken(registrationForm);
+        if (registrationToken != null) {
+            mailSender.sendRegistrationToken("lordmarkm@gmail.com", registrationToken.getToken());
             return new ModelAndView("registration/view/registration_success");
-        } else if (result == DUPLICATE){
-            return new ModelAndView("registration/view/registration_duplicate");
         } else {
-            throw new IllegalStateException("Registration was neither a success or duplicate");
+            return new ModelAndView("registration/view/registration_duplicate");
         }
     }
 

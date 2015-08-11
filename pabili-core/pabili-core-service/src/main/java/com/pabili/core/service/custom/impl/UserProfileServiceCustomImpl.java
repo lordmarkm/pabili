@@ -6,13 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pabili.commons.dto.EmailRegistrationForm;
-import com.pabili.commons.operations.OperationResult;
 import com.pabili.core.model.user.RegistrationToken;
 import com.pabili.core.service.RegistrationTokenService;
 import com.pabili.core.service.UserProfileService;
 import com.pabili.core.service.custom.UserProfileServiceCustom;
-
-import static com.pabili.commons.operations.OperationResult.*;
 
 @Transactional
 public class UserProfileServiceCustomImpl implements UserProfileServiceCustom {
@@ -24,10 +21,10 @@ public class UserProfileServiceCustomImpl implements UserProfileServiceCustom {
     private RegistrationTokenService registrationTokenService;
 
     @Override
-    public OperationResult createRegistrationToken(EmailRegistrationForm registrationForm) {
+    public RegistrationToken createRegistrationToken(EmailRegistrationForm registrationForm) {
         String email = registrationForm.getEmail();
         if (null != service.findByEmail(email)) {
-            return DUPLICATE;
+            return null;
         }
 
         RegistrationToken registrationToken = registrationTokenService.findByEmail(email);
@@ -40,7 +37,7 @@ public class UserProfileServiceCustomImpl implements UserProfileServiceCustom {
             registrationTokenService.save(registrationToken);
         }
 
-        return SUCCESS;
+        return registrationToken;
     }
 
     private String generateToken() {
