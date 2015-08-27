@@ -73,7 +73,8 @@ require([
     'angular-moment',
     'core/core.module.js',
     'browse/browse.module.js',
-    'authentication/authentication.module.js'
+    'authentication/authentication.module.js',
+    'profile/profile.module.js'
   ], function (angular) {
   angular.element().ready(function () {
     angular.bootstrap(document, [
@@ -88,7 +89,8 @@ require([
       'angularMoment',
       'core.module',
       'browse.module',
-      'authentication.module'
+      'authentication.module',
+      'profile.module'
     ]);
   });
 });

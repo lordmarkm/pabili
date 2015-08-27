@@ -14,12 +14,12 @@ define(function () {
     };
 
     //Check user authorities and redirect where appropriate
-    auth.then(function(authentication) {
-      if (!authentication.principal) {
-        $state.go('default.login');
-      }
-      $scope.principal = authentication.principal;
-    });
+//    auth.then(function(authentication) {
+//      if (!authentication.principal) {
+//        $state.go('default.login');
+//      }
+//      $scope.principal = authentication.principal;
+//    });
 
     $rootScope.$on('$stateChangeStart', function (event, toState) {
       if (typeof toState.access != 'undefined' && !$scope.isAuthorized(toState.access)) {

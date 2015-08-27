@@ -1,7 +1,10 @@
 package com.pabili.security.resource;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,17 +13,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pabili.commons.dto.CompleteRegistrationForm;
 import com.pabili.commons.dto.EmailRegistrationForm;
-import com.pabili.commons.operations.OperationResult;
 import com.pabili.core.model.user.RegistrationToken;
 import com.pabili.core.service.RegistrationTokenService;
 import com.pabili.core.service.UserProfileService;
 import com.pabili.core.service.custom.PabiliMailSender;
 
-import static com.pabili.commons.operations.OperationResult.*;
-
 @Controller
 @RequestMapping("/login/register")
 public class RegistrationResource {
+
+    private static Logger LOG = LoggerFactory.getLogger(RegistrationResource.class);
 
     @Autowired
     private UserProfileService userProfileService;
@@ -33,6 +35,7 @@ public class RegistrationResource {
 
     @RequestMapping(method = POST)
     public ModelAndView registerEmail(EmailRegistrationForm registrationForm) {
+        LOG.debug("Registration request received. processing. email={}", registrationForm.getEmail());
         RegistrationToken registrationToken = userProfileService.createRegistrationToken(registrationForm);
         if (registrationToken != null) {
             mailSender.sendRegistrationToken("lordmarkm@gmail.com", registrationToken.getToken());
