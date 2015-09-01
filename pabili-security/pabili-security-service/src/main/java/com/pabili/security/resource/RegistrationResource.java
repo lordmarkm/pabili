@@ -38,7 +38,7 @@ public class RegistrationResource {
         LOG.debug("Registration request received. processing. email={}", registrationForm.getEmail());
         RegistrationToken registrationToken = userProfileService.createRegistrationToken(registrationForm);
         if (registrationToken != null) {
-            mailSender.sendRegistrationToken("lordmarkm@gmail.com", registrationToken.getToken());
+            mailSender.sendRegistrationToken(registrationForm.getEmail(), registrationToken.getToken());
             return new ModelAndView("registration/view/registration_success");
         } else {
             return new ModelAndView("registration/view/registration_duplicate");
@@ -56,8 +56,9 @@ public class RegistrationResource {
         }
     }
 
-    @RequestMapping(value = "/complete")
-    public ModelAndView completeRegistration(CompleteRegistrationForm registrationForm) {
+    @RequestMapping(value = "/consume_token/{token}", method = POST)
+    public ModelAndView completeRegistration(@PathVariable String token, CompleteRegistrationForm registrationForm) {
+        LOG.debug("Complete registration request. form={}", registrationForm);
         return null;
     }
 }
