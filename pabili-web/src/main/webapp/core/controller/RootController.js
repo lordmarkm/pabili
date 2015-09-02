@@ -2,13 +2,11 @@ define(function () {
   return ['$scope', '$rootScope', '$state', 'auth', function ($scope, $rootScope, $state, auth) {
     $scope.contextPath = 'laundry';
     $scope.isAuthorized = function (permission) {
-      console.debug('Checking permission=' + permission);
       if (!$scope.principal) {
         console.debug('No principal');
         return false;
       }
       for (var i in $scope.principal.authorities) {
-        console.debug('Checking auth=' + $scope.principal.authorities[i].authority);
         if ($scope.principal.authorities[i].authority === permission) {
           return true;
         }
@@ -18,9 +16,9 @@ define(function () {
 
     //Check user authorities and redirect where appropriate
     auth.then(function(authentication) {
-      if (!authentication.principal) {
-        $state.go('default.login');
-      }
+//      if (!authentication.principal) {
+//        $state.go('default.login');
+//      }
       $scope.principal = authentication.principal;
     });
 
