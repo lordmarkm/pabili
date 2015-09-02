@@ -74,7 +74,7 @@ public class PabiliSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
             .formLogin()
-                .loginPage("/auth/login")
+                .loginPage("/#/login")
                 .loginProcessingUrl("/login/authenticate")
                 .failureUrl("/#/login?msg=bad_credentials")
                 .permitAll();
