@@ -30,7 +30,7 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-        //registerProxyFilter(servletContext, "springSecurityFilterChain");
+        registerProxyFilter(servletContext, "springSecurityFilterChain");
     }
  
     private void registerProxyFilter(ServletContext servletContext, String name) {

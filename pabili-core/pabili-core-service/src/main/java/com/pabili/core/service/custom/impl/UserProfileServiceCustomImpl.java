@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pabili.commons.dto.EmailRegistrationForm;
+import com.pabili.core.model.user.BuyerProfile;
+import com.pabili.core.model.user.GopherProfile;
 import com.pabili.core.model.user.RegistrationToken;
+import com.pabili.core.model.user.User;
+import com.pabili.core.model.user.UserProfile;
 import com.pabili.core.service.RegistrationTokenService;
 import com.pabili.core.service.UserProfileService;
 import com.pabili.core.service.custom.UserProfileServiceCustom;
@@ -42,5 +46,16 @@ public class UserProfileServiceCustomImpl implements UserProfileServiceCustom {
 
     private String generateToken() {
         return UUID.randomUUID().toString();
+    }
+
+    @Override
+    public UserProfile completeRegistration(User user) {
+        UserProfile userProfile = new UserProfile();
+        userProfile.setBuyerProfile(new BuyerProfile());
+        userProfile.setGopherProfile(new GopherProfile());
+        userProfile.setEmail(user.getUsername());
+        userProfile.setUser(user);
+
+        return service.save(userProfile);
     }
 }

@@ -12,10 +12,13 @@ public class CompleteRegistrationForm {
     @Override
     public String toString() {
         return new ToStringCreator(this)
-            .append("pw match?", null != password && Objects.equal(password, confirmPassword) ? "Yes" : "No")
+            .append("pw match?", passwordMatch() ? "Yes" : "No")
             .toString();
     }
 
+    public boolean passwordMatch() {
+        return null != password && Objects.equal(password, confirmPassword);
+    }
     public String getPassword() {
         return password;
     }

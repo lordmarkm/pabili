@@ -5,7 +5,7 @@
   <small ng-if="params.msg=='unauthorized'">You have requested a page you do not have access to. Please login with the proper credentials to continue or <a ui-sref="default.splash">Return to your homepage</a></small>
 </h3>
 </div>
-<form action="login/authenticate" method="post" class="form-horizontal">
+<form action="/login/authenticate" method="post" class="form-horizontal">
   <div class="form-group">
     <label>Username</label>
     <input type="text" name="username" ng-model="username" class="form-control" />
