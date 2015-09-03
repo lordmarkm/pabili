@@ -25,6 +25,11 @@
       <artifactId>pabili-profile</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>pabili</groupId>
+      <artifactId>pabili-postings</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
     <!-- Spring -->
     <dependency>

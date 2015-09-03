@@ -34,6 +34,7 @@
 
     <!-- Temporal -->
     <joda.version>2.2</joda.version>
+    <jadira.usertype.core.version>3.0.0.CR1</jadira.usertype.core.version>
 
     <!-- Logging -->
     <logback.version>1.0.9</logback.version>
@@ -136,6 +137,11 @@
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
         <version>${joda.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jadira.usertype</groupId>
+        <artifactId>usertype.core</artifactId>
+        <version>${jadira.usertype.core.version}</version>
       </dependency>
 
       <!-- Query DSL -->

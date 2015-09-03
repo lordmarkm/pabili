@@ -1,47 +1,56 @@
 package com.pabili.postings.model;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.pabili.commons.comments.Commentable;
-import com.pabili.commons.comments.CommentableType;
+import com.pabili.core.model.Location;
+import com.pabili.core.model.base.BaseImageableEntity;
 import com.pabili.core.model.user.UserProfile;
 
 /**
  * Postings are buyer-initiated transactions
  * @author mbmartinez
  */
-@Entity(name = "posting")
-public class Posting implements Commentable {
+@Entity(name = "leposting")
+public class Posting extends BaseImageableEntity {
 
     @ManyToOne
-    @JoinColumn(name = "buyer_id")
-    private UserProfile buyer;
+    @JoinColumn(name = "owner_id", nullable = false)
+    private UserProfile owner;
+
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name = "gopher_id")
-    private UserProfile gopher;
+    @JoinColumn(name = "location_id")
+    private Location location;
 
-    @Override
-    public CommentableType getCommentableType() {
-        return CommentableType.POSTING;
+    public UserProfile getOwner() {
+        return owner;
     }
 
-    public UserProfile getBuyer() {
-        return buyer;
+    public void setOwner(UserProfile owner) {
+        this.owner = owner;
     }
 
-    public void setBuyer(UserProfile buyer) {
-        this.buyer = buyer;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public UserProfile getGopher() {
-        return gopher;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public void setGopher(UserProfile gopher) {
-        this.gopher = gopher;
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
 }

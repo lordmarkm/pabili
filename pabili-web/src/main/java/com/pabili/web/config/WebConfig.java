@@ -1,11 +1,16 @@
 package com.pabili.web.config;
 
+import java.util.List;
 import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,6 +27,19 @@ import com.pabili.security.SecurityPackageMarker;
 @ComponentScan(basePackages = { "com.pabili" },
 basePackageClasses = SecurityPackageMarker.class)
 public class WebConfig extends WebMvcConfigurerAdapter {
+
+    public static final int PAGE_SIZE = 5;
+
+    // Allows us to use Pageable as an argument for controller methods
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+        PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
+        resolver.setMaxPageSize(PAGE_SIZE);
+        resolver.setFallbackPageable(new PageRequest(0, PAGE_SIZE, new Sort(Sort.Direction.DESC, "id")));
+        resolver.setOneIndexedParameters(true);
+        resolver.setSizeParameterName("count");
+        argumentResolvers.add(resolver);
+    }
 
     @Bean
     public FreeMarkerConfigurer freemarkerConfig() {

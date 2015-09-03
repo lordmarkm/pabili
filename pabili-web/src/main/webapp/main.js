@@ -74,7 +74,8 @@ require([
     'core/core.module.js',
     'browse/browse.module.js',
     'authentication/authentication.module.js',
-    'profile/profile.module.js'
+    'profile/profile.module.js',
+    'posting/posting.module.js'
   ], function (angular) {
   angular.element().ready(function () {
     angular.bootstrap(document, [
@@ -90,7 +91,8 @@ require([
       'core.module',
       'browse.module',
       'authentication.module',
-      'profile.module'
+      'profile.module',
+      'posting.module'
     ]);
   });
 });

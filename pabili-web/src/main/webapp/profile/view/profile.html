@@ -1,9 +1,16 @@
-Hi this your porfile
+<div class="alert alert-info">
+  <img src="/images/squirrel.png" height="16px"/>
+  <a ui-sref="default.browse"> Pabili</a>
+  > <a ui-sref="default.profile.summary">My Profile</a>
+</div>
 
 <ul class="nav nav-tabs">
   <li ui-sref-active="active"><a ui-sref="default.profile.summary">Summary</a></li>
-  <li ui-sref-active="active"><a ui-sref="default.profile.postings">Postings</a></li>
+  <li ui-sref-active="active"><a ui-sref="default.profile.buyrequests">Buy Requests</a></li>
+  <li ui-sref-active="active"><a ui-sref="default.profile.for_sale">For Sale</a></li>
   <li ui-sref-active="active"><a ui-sref="default.profile.shipments">Shipments</a></li>
 </ul>
+
+<div style="margin-bottom: 20px;"></div>
 
 <ui-view></ui-view>

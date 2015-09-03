@@ -1,9 +1,11 @@
 package com.pabili.commons.dto.profile;
 
+import com.pabili.commons.dto.BaseDto;
+
 /**
  * @author Mark Martinez, created Sep 3, 2015
  */
-public class UserProfileInfo {
+public class UserProfileInfo extends BaseDto {
 
     private UserInfo user;
     private String email;

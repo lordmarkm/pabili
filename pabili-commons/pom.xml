@@ -19,6 +19,11 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+    </dependency>
+
     <!-- HIBERNATE -->
     <dependency>
       <groupId>org.hibernate</groupId>
@@ -33,6 +38,16 @@
       <groupId>net.sf.dozer</groupId>
       <artifactId>dozer</artifactId>
       <version>5.5.1</version>
+    </dependency>
+
+    <!-- Temporal -->
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jadira.usertype</groupId>
+      <artifactId>usertype.core</artifactId>
     </dependency>
   </dependencies>
 </project>

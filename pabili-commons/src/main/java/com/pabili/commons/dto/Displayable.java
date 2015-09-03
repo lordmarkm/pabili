@@ -1,6 +1,6 @@
 package com.pabili.commons.dto;
 
-public class Displayable {
+public class Displayable extends BaseDto {
 
     private String title;
     private String description;
