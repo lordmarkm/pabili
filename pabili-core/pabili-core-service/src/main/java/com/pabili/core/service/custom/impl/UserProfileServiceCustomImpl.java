@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pabili.commons.dto.EmailRegistrationForm;
+import com.pabili.commons.dto.profile.UserProfileInfo;
+import com.pabili.commons.service.MappingService;
 import com.pabili.core.model.user.BuyerProfile;
 import com.pabili.core.model.user.GopherProfile;
 import com.pabili.core.model.user.RegistrationToken;
@@ -16,7 +18,7 @@ import com.pabili.core.service.UserProfileService;
 import com.pabili.core.service.custom.UserProfileServiceCustom;
 
 @Transactional
-public class UserProfileServiceCustomImpl implements UserProfileServiceCustom {
+public class UserProfileServiceCustomImpl extends MappingService<UserProfile, UserProfileInfo> implements UserProfileServiceCustom {
 
     @Autowired
     private UserProfileService service;
@@ -57,5 +59,10 @@ public class UserProfileServiceCustomImpl implements UserProfileServiceCustom {
         userProfile.setUser(user);
 
         return service.save(userProfile);
+    }
+
+    @Override
+    public UserProfileInfo findInfoByUsername(String name) {
+        return toDto(service.findByUserUsername(name));
     }
 }

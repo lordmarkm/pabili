@@ -20,6 +20,11 @@
       <groupId>pabili</groupId>
       <artifactId>pabili-security-service</artifactId>
     </dependency>
+    <dependency>
+      <groupId>pabili</groupId>
+      <artifactId>pabili-profile</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
     <!-- Spring -->
     <dependency>

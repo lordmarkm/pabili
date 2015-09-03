@@ -6,5 +6,6 @@ import com.pabili.core.service.custom.UserProfileServiceCustom;
 public interface UserProfileService extends UserProfileServiceCustom, BaseJpaService<UserProfile> {
 
     UserProfile findByEmail(String email);
+    UserProfile findByUserUsername(String username);
 
 }
