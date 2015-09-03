@@ -1,10 +1,14 @@
 package com.pabili.commons.dto;
 
+/**
+ * @author Mark Martinez, created Sep 3, 2015
+ */
 public class Displayable extends BaseDto {
 
-    private String title;
-    private String description;
-    private String imageUrl;
+    protected String title;
+    protected String description;
+    protected String thumbnailUrl;
+    protected String albumUrl;
 
     public String getTitle() {
         return title;
@@ -18,11 +22,17 @@ public class Displayable extends BaseDto {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getImageUrl() {
-        return imageUrl;
+    public String getAlbumUrl() {
+        return albumUrl;
     }
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setAlbumUrl(String albumUrl) {
+        this.albumUrl = albumUrl;
+    }
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
 }

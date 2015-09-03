@@ -41,6 +41,11 @@ define([
         url: '/images',
         templateUrl: 'posting/view/new_images.html',
         access: 'ROLE_USER'
+      })
+      .state('default.posting.new.preview', {
+        url: '/preview',
+        templateUrl: 'posting/view/new_preview.html',
+        access: 'ROLE_USER'
       });
 
     }]);

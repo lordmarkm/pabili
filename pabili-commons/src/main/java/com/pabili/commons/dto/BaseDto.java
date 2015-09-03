@@ -4,8 +4,8 @@ import org.joda.time.DateTime;
 
 public class BaseDto {
 
-    private DateTime dateCreated;
-    private DateTime dateUpdated;
+    protected DateTime dateCreated;
+    protected DateTime dateUpdated;
 
     public DateTime getDateCreated() {
         return dateCreated;

@@ -2,6 +2,8 @@ package com.pabili.commons.dto.posting;
 
 import java.math.BigDecimal;
 
+import org.springframework.core.style.ToStringCreator;
+
 import com.pabili.commons.dto.Displayable;
 import com.pabili.commons.dto.location.LocationInfo;
 
@@ -12,6 +14,16 @@ public class PostingInfo extends Displayable {
 
     private BigDecimal price;
     private LocationInfo location;
+
+    @Override
+    public String toString() {
+        return new ToStringCreator(this)
+            .append("title", title)
+            .append("desc", description)
+            .append("price", price)
+            .append("location", location)
+            .toString();
+    }
 
     public BigDecimal getPrice() {
         return price;
