@@ -1,6 +1,9 @@
 define(function () {
   return ['$scope', '$rootScope', '$state', 'auth', function ($scope, $rootScope, $state, auth) {
     $scope.contextPath = 'laundry';
+    $scope.authenticated = function () {
+      return $scope.principal ? true : false;
+    }
     $scope.isAuthorized = function (permission) {
       if (!$scope.principal) {
         console.debug('No principal');

@@ -13,7 +13,8 @@ require.config({
     'jquery': 'lib/jquery/dist/jquery.min',
     'metisMenu': 'lib/metisMenu/dist/metisMenu.min',
     'moment': 'lib/moment/min/moment.min',
-    'angular-moment': 'lib/angular-moment/angular-moment.min'
+    'angular-moment': 'lib/angular-moment/angular-moment.min',
+    'angular-storage': 'lib/ngstorage/ngStorage.min'
   },
   shim: {
     'angular': {
@@ -44,6 +45,9 @@ require.config({
     'angular-moment': {
       deps: ['angular', 'moment']
     },
+    'angular-storage': {
+      deps: ['angular']
+    },
     'toaster': {
       deps: ['angular']
     },
@@ -71,6 +75,7 @@ require([
     'metisMenu',
     'moment',
     'angular-moment',
+    'angular-storage',
     'core/core.module.js',
     'browse/browse.module.js',
     'authentication/authentication.module.js',
@@ -88,6 +93,7 @@ require([
       'ui.bootstrap',
       'toaster',
       'angularMoment',
+      'ngStorage',
       'core.module',
       'browse.module',
       'authentication.module',

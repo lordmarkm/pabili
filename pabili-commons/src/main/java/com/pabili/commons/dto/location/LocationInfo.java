@@ -7,25 +7,19 @@ import org.springframework.core.style.ToStringCreator;
  */
 public class LocationInfo {
 
-    private String location;
+    private String name;
     private long latitude;
     private long longitude;
 
     @Override
     public String toString() {
         return new ToStringCreator(this)
-            .append("location", location)
+            .append("name", name)
             .append("lat", latitude)
             .append("long", longitude)
             .toString();
     }
 
-    public String getLocation() {
-        return location;
-    }
-    public void setLocation(String location) {
-        this.location = location;
-    }
     public long getLatitude() {
         return latitude;
     }
@@ -37,6 +31,12 @@ public class LocationInfo {
     }
     public void setLongitude(long longitude) {
         this.longitude = longitude;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

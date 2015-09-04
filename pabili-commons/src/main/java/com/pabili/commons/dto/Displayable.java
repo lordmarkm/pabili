@@ -7,7 +7,7 @@ public class Displayable extends BaseDto {
 
     protected String title;
     protected String description;
-    protected String thumbnailUrl;
+    protected String imageUrl;
     protected String albumUrl;
 
     public String getTitle() {
@@ -28,11 +28,11 @@ public class Displayable extends BaseDto {
     public void setAlbumUrl(String albumUrl) {
         this.albumUrl = albumUrl;
     }
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
+    public String getImageUrl() {
+        return imageUrl;
     }
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }

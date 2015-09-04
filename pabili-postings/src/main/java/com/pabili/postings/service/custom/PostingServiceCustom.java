@@ -11,5 +11,6 @@ import com.pabili.commons.dto.posting.PostingInfo;
 public interface PostingServiceCustom {
 
     PageInfo<PostingInfo> findByOwner(String username, Pageable page);
+    PostingInfo saveInfo(String ownerUsername, PostingInfo postingInfo);
 
 }

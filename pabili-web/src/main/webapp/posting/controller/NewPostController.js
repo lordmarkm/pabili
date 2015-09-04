@@ -1,11 +1,21 @@
 define(function () {
-  return ['$scope', '$state', 'PostingService',
-    function ($scope, $state, PostingService) {
+  return ['$scope', '$state', '$rootScope', '$localStorage', 'PostingService',
+    function ($scope, $state, $rootScope, $localStorage, PostingService) {
 
     //Initialize empty posting
     $scope.post = {
         location: {}
     };
+
+    //Retrieve from local storage if existing (useful if user refreshes page while editing posting)
+    if ($localStorage.post) {
+      $scope.post = $localStorage.post;
+    }
+
+    //Store post on state change (user clicks next)
+    $rootScope.$on('$stateChangeStart', function() {
+      $localStorage.post = $scope.post;
+    });
 
     //Validation 
     $scope.invalidDetails = function () {
@@ -15,16 +25,16 @@ define(function () {
       return false;
     };
     $scope.invalidLocation = function () {
-      if (!$scope.post.location.location) return true;
+      if (!$scope.post.location.name) return true;
     };
     $scope.invalidImage = function () {
-      if (!$scope.post.thumbnailUrl) return true;
+      if (!$scope.post.imageUrl) return true;
     };
 
-    //Submi
+    //Submit
     $scope.submitPosting = function () {
       PostingService.save($scope.post, function (response) {
-        
+        delete $localStorage.post;
       });
     };
   }];

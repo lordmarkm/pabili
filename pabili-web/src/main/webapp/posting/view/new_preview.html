@@ -3,30 +3,39 @@
   <a ui-sref="default.browse"> Pabili</a>
   > Postings
   > <a ui-sref="default.posting.new.details">{{post.title | limitTo: 10}}{{post.title.length > 10 ? '...' : ''}}</a>
-  > <a ui-sref="default.posting.new.location">{{post.location.location | limitTo: 10}}{{post.location.length > 10 ? '...' : ''}}</a>
+  > <a ui-sref="default.posting.new.location">{{post.location.name | limitTo: 10}}{{post.location.length > 10 ? '...' : ''}}</a>
   > <a ui-sref="default.posting.new.images">Upload images</a>
   > Preview
 </div>
 
-<div class="col-sm-6">
-  <dl class="dl-horizontal">
-    <dt>Post title
-    <dd>{{post.title}}
-    <dt>Post description
-    <dd>{{post.description}}
-    <dt>Price
-    <dd>{{post.price}}
-    <dt>Location
-    <dd>{{post.location.location}}
-    <dt>Tags
-    <dd>{{post.tags}}
-  </dl>
-
-  <div class="text-right">
-    <small ng-if="invalidDetails() || invalidLocation() || invalidImage()" class="muted label label-danger" style="margin-right: 10px;">There are errors in previous steps!</small>
-    <span ui-sref="default.posting.new.images" class="btn btn-default">Back</span>
-    <span ng-click="submitPosting()" 
-      ng-disabled="invalidDetails() || invalidLocation() || invalidImage()"
-      class="btn btn-primary">Submit Posting</span>
+<div class="row">
+  <div class="col-sm-2">
+    <img src="{{post.imageUrl}}" class="img-preview" />
   </div>
+  
+  <div class="col-sm-6">
+    <dl class="dl-horizontal">
+      <dt>Post title
+      <dd>{{post.title}}
+      <dt>Post description
+      <dd>{{post.description}}
+      <dt>Price
+      <dd>{{post.price}}
+      <dt>Location
+      <dd>{{post.location.name}}
+      <dt>Tags
+      <dd>{{post.tags}}
+    </dl>
+  </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-sm-push-2">
+      <div class="text-right">
+        <small ng-if="invalidDetails() || invalidLocation() || invalidImage()" class="muted label label-danger" style="margin-right: 10px;">There are errors in previous steps!</small>
+        <span ui-sref="default.posting.new.images" class="btn btn-default">Back</span>
+        <span ng-click="submitPosting()" 
+          ng-disabled="invalidDetails() || invalidLocation() || invalidImage()"
+          class="btn btn-primary">Submit Posting</span>
+      </div>
+    </div>
 </div>

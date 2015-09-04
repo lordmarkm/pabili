@@ -1,6 +1,31 @@
 <div class="container">
   <div class="panel">
     <div class="panel-body">
+      <div ng-if="authenticated()" class="pull-right mb10">
+        <div class="dropdown" style="display: inline-block;">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-user"></i> {{principal.username}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+            <li><a ui-sref="default.profile.summary">View profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
+        <div class="dropdown" style="display: inline-block;">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-envelope"></i>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row"></div>
+
+      <!-- Everything goes here -->
       <ui-view></ui-view>
     </div>
   </div>

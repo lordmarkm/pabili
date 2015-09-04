@@ -3,7 +3,7 @@
   <a ui-sref="default.browse"> Pabili</a>
   > Postings
   > <a ui-sref="default.posting.new.details">{{post.title | limitTo: 10}}{{post.title.length > 10 ? '...' : ''}}</a>
-  > <a ui-sref="default.posting.new.location">{{post.location.location | limitTo: 10}}{{post.location.length > 10 ? '...' : ''}}</a>
+  > <a ui-sref="default.posting.new.location">{{post.location.name | limitTo: 10}}{{post.location.length > 10 ? '...' : ''}}</a>
   > Upload images
 </div>
 
@@ -14,7 +14,7 @@
   <div class="form-group">
     <label class="col-sm-2">Thumbnail URL</label>
     <div class="col-sm-4">
-      <input type="text" ng-model="post.thumbnailUrl"
+      <input type="text" ng-model="post.imageUrl"
        class="form-control"
        placeholder="Thumbnail URL"
        required />

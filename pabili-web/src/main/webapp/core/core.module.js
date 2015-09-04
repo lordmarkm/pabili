@@ -1,7 +1,8 @@
 define([
    'angular',
+   'moment',
    'core/controller/RootController'
-], function (angular, RootController) {
+], function (angular, moment, RootController) {
   console.debug('Configuring core.module');
   angular.module('core.module', [])
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
@@ -24,6 +25,12 @@ define([
       $rootScope.$on("$locationChangeSuccess", function() {
         $window.scrollTo(0,0);
       });
-    }]);
+    }])
+
+    .filter('fromNow', function() {
+      return function(date) {
+        return moment(date).fromNow();
+      };
+    });
 
 });

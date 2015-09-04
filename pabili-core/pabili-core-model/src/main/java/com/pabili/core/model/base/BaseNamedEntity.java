@@ -3,6 +3,8 @@ package com.pabili.core.model.base;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+import org.hibernate.annotations.Type;
+
 @MappedSuperclass
 public abstract class BaseNamedEntity extends BaseEntity {
 
@@ -10,6 +12,7 @@ public abstract class BaseNamedEntity extends BaseEntity {
     protected String name;
 
     @Column(name = "description")
+    @Type(type = "text")
     protected String description;
 
     public String getName() {

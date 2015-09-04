@@ -1,6 +1,25 @@
-{{postings}}
-
-<div class="pull-right">
-  <a ui-sref="default.posting.new.start" class="btn btn-primary"><i class="fa fa-plus"></i> New</a>
+<!-- This is the +New button -->
+<div class="row">
+  <div class="col-sm-12 text-right">
+    <a ui-sref="default.posting.new.start" class="btn btn-primary"><i class="fa fa-plus"></i> New</a>
+  </div>
 </div>
-<p ng-if="!postings.length">No items posted</p>
+
+<div class="row mt20">
+  <!-- Alert if nothing posted -->
+  <p ng-if="!postings.data.length">No items posted</p>
+  
+  <!-- Postings list start -->
+  <div ng-repeat="post in postings.data" class="col-sm-3">
+    <div class="thumbnail">
+      <img src="{{post.imageUrl ? post.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+      <div class="caption">
+        <h4>{{post.title}} <br/>
+          <small><i class="fa fa-location-arrow"></i> {{post.location.name | limitTo: 20}}</small><br/>
+          <small><i class="fa fa-clock-o"></i> Posted {{post.dateCreated | fromNow}}</small>
+        </h4>
+        <p>{{post.description | limitTo: 60}}{{post.description.length > 60 ? '...' : ''}}</p>
+      </div>
+    </div>
+  </div>
+</div>

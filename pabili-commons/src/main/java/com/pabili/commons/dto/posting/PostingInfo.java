@@ -22,6 +22,8 @@ public class PostingInfo extends Displayable {
             .append("desc", description)
             .append("price", price)
             .append("location", location)
+            .append("imageUrl", imageUrl)
+            .append("albumUrl", albumUrl)
             .toString();
     }
 
