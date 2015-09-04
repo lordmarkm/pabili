@@ -3,10 +3,9 @@ define(function () {
     $scope.contextPath = 'laundry';
     $scope.authenticated = function () {
       return $scope.principal ? true : false;
-    }
+    };
     $scope.isAuthorized = function (permission) {
       if (!$scope.principal) {
-        console.debug('No principal');
         return false;
       }
       for (var i in $scope.principal.authorities) {

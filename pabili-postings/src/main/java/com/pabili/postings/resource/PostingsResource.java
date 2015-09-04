@@ -18,11 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pabili.commons.dto.PageInfo;
 import com.pabili.commons.dto.posting.PostingInfo;
+import com.pabili.commons.web.GenericController;
 import com.pabili.postings.service.PostingService;
 
 @RestController
 @RequestMapping("/posting")
-public class PostingsResource {
+public class PostingsResource extends GenericController {
 
     private static Logger LOG = LoggerFactory.getLogger(PostingsResource.class);
 
@@ -41,7 +42,7 @@ public class PostingsResource {
             LOG.info("Finding own posts. user={}, page={}", principal.getName(), page);
             results = service.findByOwner(principal.getName(), page);
         } else if (null != username) {
-            LOG.info("Finding user posts. user={}, page={}", principal.getName(), page);
+            LOG.info("Finding user posts. user={}, page={}", name(principal), page);
             results = service.findByOwner(username, page);
         }
         return new ResponseEntity<>(results, OK);

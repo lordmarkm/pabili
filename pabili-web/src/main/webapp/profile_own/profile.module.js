@@ -1,10 +1,10 @@
 define([
    'angular',
-   'profile/controller/ProfileRootController',
-   'profile/controller/BuyRequestController',
-   'profile/controller/PostingController',
-   'profile/service/ProfileService',
-   'profile/service/BuyRequestService',
+   'profile_own/controller/ProfileRootController',
+   'profile_own/controller/BuyRequestController',
+   'profile_own/controller/PostingController',
+   'profile_own/service/ProfileService',
+   'profile_own/service/BuyRequestService',
    'posting/service/PostingService'
 ], function (angular, ProfileRootController, BuyRequestController, PostingController, ProfileService,
     BuyRequestService, PostingService) {
@@ -18,29 +18,29 @@ define([
       $stateProvider.state('default.profile', {
         url: 'profile',
         controller: ProfileRootController,
-        templateUrl: 'profile/view/profile.html',
+        templateUrl: 'profile_own/view/profile.html',
         abstract: true
       })
       .state('default.profile.summary', {
         url: '',
-        templateUrl: 'profile/view/summary.html',
+        templateUrl: 'profile_own/view/summary.html',
         access: 'ROLE_USER'
       })
       .state('default.profile.buyrequests', {
         url: '/postings',
         controller: BuyRequestController,
-        templateUrl: 'profile/view/buy_requests.html',
+        templateUrl: 'profile_own/view/buy_requests.html',
         access: 'ROLE_USER'
       })
       .state('default.profile.shipments', {
         url: '/shipments',
-        templateUrl: 'profile/view/shipments.html',
+        templateUrl: 'profile_own/view/shipments.html',
         access: 'ROLE_USER'
       })
       .state('default.profile.for_sale', {
         url: '/for_sale',
         controller: PostingController,
-        templateUrl: 'profile/view/for_sale.html',
+        templateUrl: 'profile_own/view/for_sale.html',
         access: 'ROLE_USER'
       });
     }]);

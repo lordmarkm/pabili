@@ -1,0 +1,16 @@
+<div class="alert alert-info">
+  <img src="/images/squirrel.png" height="16px"/>
+  <a ui-sref="default.browse"> Pabili</a>
+  > <a ui-sref="default.profile.summary">{{username}}'s Profile</a>
+</div>
+
+<ul class="nav nav-tabs">
+  <li ui-sref-active="active"><a ui-sref="default.profile_others.summary({username: username})">Summary</a></li>
+  <li ui-sref-active="active"><a ui-sref="default.profile_others.buyrequests">Buy Requests</a></li>
+  <li ui-sref-active="active"><a ui-sref="default.profile_others.for_sale({username: username})">For Sale</a></li>
+  <li ui-sref-active="active"><a ui-sref="default.profile_others.shipments">Shipments</a></li>
+</ul>
+
+<div style="margin-bottom: 20px;"></div>
+
+<ui-view></ui-view>

@@ -65,4 +65,9 @@ public class UserProfileServiceCustomImpl extends MappingService<UserProfile, Us
     public UserProfileInfo findInfoByUsername(String name) {
         return toDto(service.findByUserUsername(name));
     }
+
+    @Override
+    public UserProfileInfo getPublicProfileByUsername(String username) {
+        return findInfoByUsername(username);
+    }
 }
