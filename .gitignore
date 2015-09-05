@@ -7,7 +7,6 @@ overlays
 id_file
 selenium_standalone_*
 *.log
-lib/
 
 # dev folders
 activemq-data
