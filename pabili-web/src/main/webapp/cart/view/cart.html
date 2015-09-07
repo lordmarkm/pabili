@@ -38,9 +38,9 @@
           <td style="white-space: nowrap;">
             <h4 class="text-center">{{buyRequest.quantity}}</h4>
             <span>
-              <button class="btn btn-default btn-xs"><i class="fa fa-arrow-up"></i></button>
-              <button class="btn btn-default btn-xs"><i class="fa fa-arrow-down"></i></button>
-              <button class="btn btn-default btn-xs"><i class="fa fa-close"></i></button>
+              <button ng-click="buyRequest.quantity = buyRequest.quantity + 1" class="btn btn-default btn-xs"><i class="fa fa-arrow-up"></i></button>
+              <button ng-click="decrement(buyRequest, $index)" class="btn btn-default btn-xs"><i class="fa fa-arrow-down"></i></button>
+              <button ng-click="cart.buyRequests.splice($index,1)" class="btn btn-default btn-xs"><i class="fa fa-close"></i></button>
             </span>
           </td>
           <td style="white-space: nowrap;">{{buyRequest.posting ? buyRequest.posting.price : '' | currency: '₱'}}</td>
