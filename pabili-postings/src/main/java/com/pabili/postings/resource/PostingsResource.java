@@ -5,6 +5,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,13 @@ public class PostingsResource extends GenericController {
 
     @Autowired
     private PostingService service;
+
+    @RequestMapping(method = GET, params = "postingIds")
+    public ResponseEntity<List<PostingInfo>> getPostingsById(@RequestParam Long... postingIds) {
+        LOG.info("Request postings. ids={}", (Object[])postingIds);
+        List<PostingInfo> postingInfos = service.findInfo(postingIds);
+        return new ResponseEntity<>(postingInfos, OK);
+    }
 
     @RequestMapping(method = GET, params = "postingId")
     public ResponseEntity<PostingInfo> getPostingById(@RequestParam Long postingId) {

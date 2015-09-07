@@ -1,5 +1,8 @@
 package com.pabili.commons.service;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -18,6 +21,9 @@ public abstract class BaseJpaCustomServiceImpl<E, D, R extends BaseJpaService<E>
 
     public D findInfo(Long id) {
         return toDto(service.findOne(id));
+    }
+    public List<D> findInfo(Long... ids) {
+        return toDto(service.findAll(Arrays.asList(ids)));
     }
     public D saveInfo(D dto) {
         return toDto(service.save(toEntity(dto)));
