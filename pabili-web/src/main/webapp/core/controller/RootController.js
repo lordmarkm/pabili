@@ -1,5 +1,5 @@
 define(function () {
-  return ['$scope', '$rootScope', '$state', '$localStorage', 'auth', function ($scope, $rootScope, $state, $localStorage, auth) {
+  return ['$scope', '$rootScope', '$state', '$sessionStorage', 'auth', function ($scope, $rootScope, $state, $sessionStorage, auth) {
     $scope.contextPath = 'laundry';
     $scope.authenticated = function () {
       return $scope.principal ? true : false;
@@ -28,12 +28,12 @@ define(function () {
     };
 
     //Shopping card
-    if (!$localStorage.cart) {
-      $localStorage.cart = {
-          posts: []
+    if (!$sessionStorage.cart) {
+      $sessionStorage.cart = {
+          buyRequests: []
       };
     }
-    $scope.cart = $localStorage.cart;
+    $scope.cart = $sessionStorage.cart;
 
     //Check user authorities and redirect where appropriate
     auth.then(function(authentication) {

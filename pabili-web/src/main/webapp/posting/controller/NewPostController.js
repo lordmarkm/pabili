@@ -1,6 +1,6 @@
 define(function () {
-  return ['$scope', '$state', '$rootScope', '$localStorage', 'PostingService',
-    function ($scope, $state, $rootScope, $localStorage, PostingService) {
+  return ['$scope', '$state', '$rootScope', '$sessionStorage', 'PostingService',
+    function ($scope, $state, $rootScope, $sessionStorage, PostingService) {
 
     //Initialize empty posting
     $scope.post = {
@@ -8,13 +8,13 @@ define(function () {
     };
 
     //Retrieve from local storage if existing (useful if user refreshes page while editing posting)
-    if ($localStorage.post) {
-      $scope.post = $localStorage.post;
+    if ($sessionStorage.post) {
+      $scope.post = $sessionStorage.post;
     }
 
     //Store post on state change (user clicks next)
     $rootScope.$on('$stateChangeStart', function() {
-      $localStorage.post = $scope.post;
+      $sessionStorage.post = $scope.post;
     });
 
     //Validation 
@@ -34,7 +34,7 @@ define(function () {
     //Submit
     $scope.submitPosting = function () {
       PostingService.save($scope.post, function (response) {
-        delete $localStorage.post;
+        delete $sessionStorage.post;
       });
     };
   }];

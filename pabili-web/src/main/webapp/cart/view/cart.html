@@ -4,10 +4,51 @@
   > My Shopping Cart
 </div>
 
-{{cart}}
+<p ng-if="cart.buyRequests.length < 1">Your shopping cart is empty</p>
 
-<p ng-if="cart.posts.length < 1">Your shopping cart is empty</p>
-
-<div ng-if="cart.posts.length > 0" class="row">
-
+<div ng-if="cart.buyRequests.length > 0" class="row">
+  <div class="col-sm-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Item Description</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="buyRequest in cart.buyRequests">
+          <td ng-if="buyRequest.posting">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="thumbnail">
+                  <img src="{{buyRequest.posting.imageUrl ? buyRequest.posting.imageUrl : '/images/no_image.jpg'}}" />
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <strong>{{buyRequest.posting.title}}</strong><br/>
+                {{buyRequest.posting.description | limitTo: 120}}{{buyRequest.posting.description.length > 120 ? '...' : ''}}<br/>
+                <small><i class="glyphicon glyphicon-map-marker"></i> {{buyRequest.posting.location.name | limitTo: 20}}</small><br/>
+              </div>
+            </div>
+          </td>
+          <td ng-if="!buyRequest.posting">
+            PH non-posting buy request
+          </td>
+          <td style="white-space: nowrap;">
+            <h4 class="text-center">{{buyRequest.quantity}}</h4>
+            <span>
+              <button class="btn btn-default btn-xs"><i class="fa fa-arrow-up"></i></button>
+              <button class="btn btn-default btn-xs"><i class="fa fa-arrow-down"></i></button>
+              <button class="btn btn-default btn-xs"><i class="fa fa-close"></i></button>
+            </span>
+          </td>
+          <td style="white-space: nowrap;">{{buyRequest.posting ? buyRequest.posting.price : '' | currency: '₱'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button class="btn btn-primary">Create Buy Request</button>
+    </div>
+  </div>
 </div>

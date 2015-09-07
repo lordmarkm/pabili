@@ -1,5 +1,5 @@
 define(function () {
-  return ['$localStorage', '$modal', function ($localStorage, $modal) {
+  return ['$sessionStorage', '$modal', function ($sessionStorage, $modal) {
 
 
     this.addToCart = function (authorized, posting) {
@@ -19,16 +19,24 @@ define(function () {
         return;
       }
 
-      var cart = $localStorage.cart;
-      for (var i = 0; i < cart.posts.length; i++) {
-        if (cart.posts[i].posting.id === posting.id) {
-          
-        } else {
-          
+      var existing = false;
+      var cart = $sessionStorage.cart;
+      console.debug(cart);
+      for (var i = 0; i < cart.buyRequests.length; i++) {
+        if (cart.buyRequests[i].posting.id === posting.id) {
+          cart.buyRequests[i].quantity++;
+          existing = true;
         }
       }
+      if (!existing) {
+        $sessionStorage.cart.buyRequests.push({
+            title: posting.title,
+            description: posting.description,
+            quantity: 1,
+            posting: posting
+        });
+      };
 
-      $localStorage.cart.posts.push(posting);
       $modal.open({
         templateUrl: 'cart/view/modal_add_to_cart.html',
         controller: ['$scope', '$state', '$modalInstance', function ($scope, $state, $modalInstance) {

@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.pabili.core.model.base.BaseEntity;
+
 /**
  * @author mbmartinez
  */
 @Entity(name = "buy_request")
-public class BuyRequest {
+public class BuyRequest extends BaseEntity {
 
     @Column(name = "title")
     private String title;
