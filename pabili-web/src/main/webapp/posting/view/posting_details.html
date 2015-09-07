@@ -1,0 +1,34 @@
+<div class="alert alert-info">
+  <img src="/images/squirrel.png" height="16px"/>
+  <a ui-sref="default.browse"> Pabili</a>
+  > <a ui-sref="default.profile_others.for_sale({username: post.owner})">{{post.owner}}'s Postings</a>
+  > {{post.title}}
+</div>
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="thumbnail">
+      <img src="{{post.imageUrl ? post.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+      <div class="caption">
+        <h4>{{post.title}} <br/>
+          <small><i class="glyphicon glyphicon-map-marker"></i> {{post.location.name | limitTo: 20}}</small><br/>
+          <small><i class="fa fa-clock-o"></i>&nbsp; Posted {{post.dateCreated | fromNow}}</small>
+        </h4>
+        <p>{{post.description | limitTo: 60}}{{post.description.length > 60 ? '...' : ''}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <h4><small><i class="fa fa-pencil"></i> {{post.dateUpdated ? post.dateUpdated : post.dateCreated | date}}</small></h4>
+    <h3>{{post.title}}</h3>
+    <h4>
+      <small><i class="fa fa-user"></i>&nbsp; {{post.owner}}</small><br/>
+      <small><i class="glyphicon glyphicon-map-marker"></i> {{post.location.name | limitTo: 20}}</small>
+    </h4>
+    <hr />
+    <p>{{post.description}}</p>
+    <hr />
+    <span class="btn btn-primary">Create buy order</span>
+    <span class="btn btn-success"><i class="fa fa-shopping-cart"> Add to cart</i></span>
+  </div>
+</div>

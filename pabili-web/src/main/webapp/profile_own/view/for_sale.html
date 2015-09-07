@@ -14,7 +14,7 @@
   <!-- Postings list start -->
   <div ng-repeat="post in postings.data" class="col-sm-3">
     <div class="thumbnail">
-      <img src="{{post.imageUrl ? post.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+      <img src="{{post.imageUrl ? post.imageUrl : '/images/no_image.jpg'}}" ui-sref="default.posting.details({postingId: post.id, title: convertToSlug(post.title)})" alt="No image" class="pointer">
       <div class="caption">
         <h4>{{post.title}} <br/>
           <small><i class="fa fa-location-arrow"></i> {{post.location.name | limitTo: 20}}</small><br/>

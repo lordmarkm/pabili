@@ -16,6 +16,17 @@ define(function () {
       return false;
     };
 
+    //String to url friendly string http://stackoverflow.com/questions/1053902/how-to-convert-a-title-to-a-url-slug-in-jquery
+    $scope.convertToSlug = function(str) {
+        if (!str) {
+          return 'no-title';
+        }
+        return str
+            .toLowerCase()
+            .replace(/[^\w ]+/g,'')
+            .replace(/ +/g,'-');
+    };
+
     //Check user authorities and redirect where appropriate
     auth.then(function(authentication) {
 //      if (!authentication.principal) {

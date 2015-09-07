@@ -8,14 +8,25 @@
   <!-- Postings list start -->
   <div ng-repeat="post in postings.data" class="col-sm-3">
     <div class="thumbnail">
-      <img src="{{post.imageUrl ? post.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+      <img src="{{post.imageUrl ? post.imageUrl : '/images/no_image.jpg'}}" ui-sref="default.posting.details({postingId: post.id, title: convertToSlug(post.title)})" alt="No image" class="pointer">
       <div class="caption">
-        <h4>{{post.title}} <br/>
+        <h4><a ui-sref="default.posting.details({postingId: post.id, title: convertToSlug(post.title)})">{{post.title}}</a> <br/>
           <small><i class="glyphicon glyphicon-map-marker"></i> {{post.location.name | limitTo: 20}}</small><br/>
           <small><i class="fa fa-clock-o"></i> Posted {{post.dateCreated | fromNow}}</small>
         </h4>
         <p>{{post.description | limitTo: 60}}{{post.description.length > 60 ? '...' : ''}}</p>
-        <small ng-if="principal.username != username"><a class="btn btn-primary btn-xs" ui-sref="buyrequest.new.start({postingId: post.id})">Create buy request</a></small>
+        <small ng-if="principal.username != username">
+          <div class="btn-group" role="group">
+            <a class="btn btn-primary btn-xs" ui-sref="default.posting.details({postingId: post.id, title: convertToSlug(post.title)})">View details</a>
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="fa fa-shopping-cart"></i> Add to cart</a></li>
+              <li><a href="#">Create buy request</a></li>
+            </ul>
+          </div>
+        </small>
       </div>
     </div>
   </div>

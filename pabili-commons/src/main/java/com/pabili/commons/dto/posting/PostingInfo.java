@@ -12,12 +12,14 @@ import com.pabili.commons.dto.location.LocationInfo;
  */
 public class PostingInfo extends Displayable {
 
+    private String owner;
     private BigDecimal price;
     private LocationInfo location;
 
     @Override
     public String toString() {
         return new ToStringCreator(this)
+            .append("owner", owner)
             .append("title", title)
             .append("desc", description)
             .append("price", price)
@@ -38,6 +40,14 @@ public class PostingInfo extends Displayable {
     }
     public void setLocation(LocationInfo location) {
         this.location = location;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
 }

@@ -4,6 +4,7 @@ import org.joda.time.DateTime;
 
 public class BaseDto {
 
+    protected Long id;
     protected DateTime dateCreated;
     protected DateTime dateUpdated;
 
@@ -18,6 +19,12 @@ public class BaseDto {
     }
     public void setDateUpdated(DateTime dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

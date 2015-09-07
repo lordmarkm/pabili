@@ -1,4 +1,4 @@
-package com.pabili.core.service;
+package com.pabili.commons.service;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;

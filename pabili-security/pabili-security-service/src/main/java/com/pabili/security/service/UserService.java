@@ -1,7 +1,7 @@
 package com.pabili.security.service;
 
+import com.pabili.commons.service.BaseJpaService;
 import com.pabili.core.model.user.User;
-import com.pabili.core.service.BaseJpaService;
 import com.pabili.security.service.custom.UserServiceCustom;
 
 /**

@@ -30,6 +30,13 @@ public class PostingsResource extends GenericController {
     @Autowired
     private PostingService service;
 
+    @RequestMapping(method = GET, params = "postingId")
+    public ResponseEntity<PostingInfo> getPostingById(@RequestParam Long postingId) {
+        PostingInfo postingInfo = service.findInfo(postingId);
+        LOG.info("Request posting view. postingInfo={}", postingInfo);
+        return new ResponseEntity<PostingInfo>(postingInfo, OK);
+    }
+
     @RequestMapping(method = GET)
     public ResponseEntity<PageInfo<PostingInfo>> postings(
             Principal principal,

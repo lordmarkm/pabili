@@ -1,5 +1,6 @@
 package com.pabili.core.service;
 
+import com.pabili.commons.service.BaseJpaService;
 import com.pabili.core.model.Location;
 import com.pabili.core.service.custom.LocationServiceCustom;
 

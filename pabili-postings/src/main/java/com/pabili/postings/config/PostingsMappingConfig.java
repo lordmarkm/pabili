@@ -28,7 +28,8 @@ public class PostingsMappingConfig {
             protected void configure() {
                 mapping(Posting.class, PostingInfo.class)
                     .fields("name", "title")
-                    .fields("location", "location", oneWay());
+                    .fields("location", "location", oneWay())
+                    .fields("owner.user.username", "owner", oneWay());
             }
         });
     }
