@@ -1,1 +1,13 @@
-<p ng-if="!buyrequests.length">No buy requests</p>
+<div ng-if="!profile.buyerProfile.active">
+  <div class="row">
+    <div class="col-sm-6">Your buyer profile is inactive.</div>
+  </div>
+  <div class="row mt20">
+    <div class="col-sm-6">
+      <button ui-sref="default.buyer_profile.shipping_address" class="btn btn-primary">Activate buyer profile</button>
+    </div>
+  </div>
+</div>
+<div ng-if="profile.buyerProfile.active">
+  <p ng-if="!buyrequests.length">No buy requests</p>
+</div>

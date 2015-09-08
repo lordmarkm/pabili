@@ -3,10 +3,12 @@ define([
    'profile_own/controller/ProfileRootController',
    'profile_own/controller/BuyRequestController',
    'profile_own/controller/PostingController',
+   'profile_own/controller/BuyerProfileController',
    'profile_own/service/ProfileService',
    'profile_own/service/BuyRequestService',
    'posting/service/PostingService'
-], function (angular, ProfileRootController, BuyRequestController, PostingController, ProfileService,
+], function (angular, ProfileRootController, BuyRequestController, PostingController, BuyerProfileController,
+    ProfileService,
     BuyRequestService, PostingService) {
   console.debug('Configuring profile.module');
   angular.module('profile.module', [])
@@ -42,6 +44,18 @@ define([
         controller: PostingController,
         templateUrl: 'profile_own/view/for_sale.html',
         access: 'ROLE_USER'
+      })
+      
+      //Activation/Editing of buyer profile
+      .state('default.buyer_profile', {
+        url: 'buyer_profile',
+        controller: BuyerProfileController,
+        template: '<ui-view></ui-view>',
+        abstract: true
+      })
+      .state('default.buyer_profile.shipping_address', {
+        url: '/shipping_address',
+        templateUrl: '/profile_own/view/buyer_profile_shipping_addr.html'
       });
     }]);
 

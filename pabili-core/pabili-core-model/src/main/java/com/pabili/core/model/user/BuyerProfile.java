@@ -4,9 +4,21 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+
+import org.hibernate.annotations.Type;
+
+import com.pabili.core.model.Address;
 
 @Embeddable
 public class BuyerProfile {
+
+    @Column(name = "buy_active")
+    @Type(type = "yes_no")
+    private boolean active;
+
+    @Embedded
+    private Address shippingAddress;
 
     /**
      * Balance pending incomplete transactions
@@ -42,6 +54,22 @@ public class BuyerProfile {
 
     public void setTotalTransactions(long totalTransactions) {
         this.totalTransactions = totalTransactions;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
 }

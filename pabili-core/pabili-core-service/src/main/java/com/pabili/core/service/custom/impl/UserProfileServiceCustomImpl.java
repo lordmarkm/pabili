@@ -53,7 +53,11 @@ public class UserProfileServiceCustomImpl extends MappingService<UserProfile, Us
     @Override
     public UserProfile completeRegistration(User user) {
         UserProfile userProfile = new UserProfile();
-        userProfile.setBuyerProfile(new BuyerProfile());
+        
+        BuyerProfile buyerProfile = new BuyerProfile();
+        buyerProfile.setActive(false);
+        userProfile.setBuyerProfile(buyerProfile);
+
         userProfile.setGopherProfile(new GopherProfile());
         userProfile.setEmail(user.getUsername());
         userProfile.setUser(user);
