@@ -6,15 +6,19 @@ define([
    'profile_own/controller/BuyerProfileController',
    'profile_own/service/ProfileService',
    'profile_own/service/BuyRequestService',
-   'posting/service/PostingService'
+   'posting/service/PostingService',
+   'profile_own/service/BuyerProfileService',
+   'profile_own/resolve/BuyerProfileResolve'
 ], function (angular, ProfileRootController, BuyRequestController, PostingController, BuyerProfileController,
     ProfileService,
-    BuyRequestService, PostingService) {
+    BuyRequestService, PostingService, BuyerProfileService,
+    BuyerProfileResolve) {
   console.debug('Configuring profile.module');
   angular.module('profile.module', [])
     .service('ProfileService', ProfileService)
     .service('BuyRequestService', BuyRequestService)
     .service('PostingService', PostingService)
+    .service('BuyerProfileService', BuyerProfileService)
     .config(['$stateProvider', function ($stateProvider) {
 
       $stateProvider.state('default.profile', {
@@ -51,11 +55,16 @@ define([
         url: 'buyer_profile',
         controller: BuyerProfileController,
         template: '<ui-view></ui-view>',
+        resolve: BuyerProfileResolve,
         abstract: true
       })
-      .state('default.buyer_profile.shipping_address', {
+      .state('default.buyer_profile.shipping_addr', {
         url: '/shipping_address',
-        templateUrl: '/profile_own/view/buyer_profile_shipping_addr.html'
+        templateUrl: '/profile_own/view/shipping_addr.html'
+      })
+      .state('default.buyer_profile.reimbursement_acct', {
+        url: '/reimbursement_acct',
+        templateUrl: '/profile_own/view/reimbursement_acct.html'
       });
     }]);
 

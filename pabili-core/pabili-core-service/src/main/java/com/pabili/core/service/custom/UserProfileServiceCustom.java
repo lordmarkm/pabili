@@ -1,6 +1,7 @@
 package com.pabili.core.service.custom;
 
 import com.pabili.commons.dto.EmailRegistrationForm;
+import com.pabili.commons.dto.profile.BuyerProfileInfo;
 import com.pabili.commons.dto.profile.UserProfileInfo;
 import com.pabili.core.model.user.RegistrationToken;
 import com.pabili.core.model.user.User;
@@ -15,5 +16,6 @@ public interface UserProfileServiceCustom {
     UserProfile completeRegistration(User user);
     UserProfileInfo findInfoByUsername(String name);
     UserProfileInfo getPublicProfileByUsername(String username);
+    BuyerProfileInfo updateBuyerProfile(String username, BuyerProfileInfo buyerProfileInfo);
 
 }

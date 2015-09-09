@@ -1,0 +1,32 @@
+<div class="alert alert-info">
+  <img src="/images/squirrel.png" height="16px"/>
+  <a ui-sref="default.browse"> Pabili</a>
+  > <a ui-sref="default.profile.summary">My Profile</a>
+  > <a ui-sref="default.buyer_profile.shipping_addr">Shipping Address</a>
+  > Reimbursement Account
+</div>
+
+<form ng-submit="submit()" class="form form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Bank</label>
+    <div class="col-sm-4">
+      <select ng-model="buyerProfile.reimbursementAccount.bank" ng-options="bank.enum as bank.name for bank in banks" class="form-control"></select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Account Name</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="buyerProfile.reimbursementAccount.accountName" class="form-control" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Account Number</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="buyerProfile.reimbursementAccount.accountNumber" class="form-control" />
+    </div>
+  </div>
+  <div class="col-sm-4 col-sm-push-2 text-right">
+    <button ui-sref="default.buyer_profile.shipping_addr" class="btn btn-default">Back</button>
+    <button ng-click="saveBuyerProfile()" class="btn btn-primary">Finish</button>
+  </div>
+</form>

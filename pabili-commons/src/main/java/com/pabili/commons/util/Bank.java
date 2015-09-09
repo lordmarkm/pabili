@@ -1,4 +1,4 @@
-package com.pabili.core.model.enums;
+package com.pabili.commons.util;
 
 public enum Bank {
 

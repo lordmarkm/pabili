@@ -9,6 +9,7 @@ import javax.persistence.Embedded;
 import org.hibernate.annotations.Type;
 
 import com.pabili.core.model.Address;
+import com.pabili.core.model.finance.BankAccount;
 
 @Embeddable
 public class BuyerProfile {
@@ -19,6 +20,9 @@ public class BuyerProfile {
 
     @Embedded
     private Address shippingAddress;
+
+    @Embedded
+    private BankAccount reimbursementAccount;
 
     /**
      * Balance pending incomplete transactions
@@ -70,6 +74,14 @@ public class BuyerProfile {
 
     public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    public BankAccount getReimbursementAccount() {
+        return reimbursementAccount;
+    }
+
+    public void setReimbursementAccount(BankAccount reimbursementAccount) {
+        this.reimbursementAccount = reimbursementAccount;
     }
 
 }

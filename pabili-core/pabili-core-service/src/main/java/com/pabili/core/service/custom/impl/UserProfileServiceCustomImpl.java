@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pabili.commons.dto.EmailRegistrationForm;
+import com.pabili.commons.dto.profile.BuyerProfileInfo;
 import com.pabili.commons.dto.profile.UserProfileInfo;
 import com.pabili.commons.service.MappingService;
 import com.pabili.core.model.user.BuyerProfile;
@@ -73,5 +74,14 @@ public class UserProfileServiceCustomImpl extends MappingService<UserProfile, Us
     @Override
     public UserProfileInfo getPublicProfileByUsername(String username) {
         return findInfoByUsername(username);
+    }
+
+    @Override
+    public BuyerProfileInfo updateBuyerProfile(String username, BuyerProfileInfo buyerProfileInfo) {
+        UserProfile user = service.findByUserUsername(username);
+        BuyerProfile buyerProfile = mapper.map(buyerProfileInfo, BuyerProfile.class);
+        buyerProfile.setActive(true);
+        user.setBuyerProfile(buyerProfile);
+        return mapper.map(service.save(user).getBuyerProfile(), BuyerProfileInfo.class);
     }
 }

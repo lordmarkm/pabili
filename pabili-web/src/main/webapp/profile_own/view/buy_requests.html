@@ -4,10 +4,35 @@
   </div>
   <div class="row mt20">
     <div class="col-sm-6">
-      <button ui-sref="default.buyer_profile.shipping_address" class="btn btn-primary">Activate buyer profile</button>
+      <button ui-sref="default.buyer_profile.shipping_addr" class="btn btn-primary">Activate buyer profile</button>
     </div>
   </div>
 </div>
 <div ng-if="profile.buyerProfile.active">
+  <h4>Shipping Address</h4>
+  <dl class="dl-horizontal">
+    <dt>Address line 1</dt>
+    <dd>{{profile.buyerProfile.shippingAddress.addressLine1}}
+    <dt>Address line 2</dt>
+    <dd>{{profile.buyerProfile.shippingAddress.addressLine2}}
+    <dt>City
+    <dd>{{profile.buyerProfile.shippingAddress.city}}
+    <dt>Province
+    <dd>{{profile.buyerProfile.shippingAddress.province}}
+  </dl>
+  <h4>Reimbursement Account</h4>
+  <dl class="dl-horizontal">
+    <dt>Bank
+    <dd>{{profile.buyerProfile.reimbursementAccount.bank}}
+    <dt>Account Name
+    <dd>{{profile.buyerProfile.reimbursementAccount.accountName}}
+    <dt>Account number
+    <dd>{{profile.buyerProfile.reimbursementAccount.accountNumber}}
+  </dl>
+  <div class="text-right">
+    <button ui-sref="default.buyer_profile.shipping_addr" class="btn btn-default">Update buyer profile</button>
+  </div>
+  <hr>
+  <h4>Buy Requests</h4>
   <p ng-if="!buyrequests.length">No buy requests</p>
 </div>

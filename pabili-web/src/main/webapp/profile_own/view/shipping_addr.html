@@ -1,0 +1,42 @@
+<div class="alert alert-info">
+  <img src="/images/squirrel.png" height="16px"/>
+  <a ui-sref="default.browse"> Pabili</a>
+  > <a ui-sref="default.profile.summary">My Profile</a>
+  > Shipping Address
+</div>
+
+<form name="shippingAddressForm" ng-submit="submit()" class="form form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Address line 1</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="buyerProfile.shippingAddress.addressLine1" class="form-control" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Address line 2</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="buyerProfile.shippingAddress.addressLine2" class="form-control" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">City</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="buyerProfile.shippingAddress.city" class="form-control" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Province</label>
+    <div class="col-sm-4">
+      <input type="text" ng-model="buyerProfile.shippingAddress.province" class="form-control" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Country</label>
+    <div class="col-sm-4">
+      <p class="form-control-static">Philippines</p>
+    </div>
+  </div>
+  <div class="col-sm-4 col-sm-push-2 text-right">
+    <button ng-disabled="shippingAddressForm.$invalid" ui-sref="default.buyer_profile.reimbursement_acct" class="btn btn-primary">Next</button>
+  </div>
+</form>
