@@ -1,9 +1,13 @@
 package com.pabili.postings.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.pabili.core.model.base.BaseEntity;
 import com.pabili.core.model.user.UserProfile;
@@ -20,8 +24,11 @@ public class BuyRequestHeader extends BaseEntity {
     @Column(name = "description")
     private String description;
 
+    @OneToMany(mappedBy = "buyRequestHeader", cascade = CascadeType.ALL)
+    private List<BuyRequest> buyRequests;
+
     @ManyToOne
-    @JoinColumn(name = "creator_id")
+    @JoinColumn(name = "creator_id", nullable = false)
     private UserProfile creator;
 
     public UserProfile getCreator() {
@@ -46,6 +53,14 @@ public class BuyRequestHeader extends BaseEntity {
 
     public void setCreator(UserProfile creator) {
         this.creator = creator;
+    }
+
+    public List<BuyRequest> getBuyRequests() {
+        return buyRequests;
+    }
+
+    public void setBuyRequests(List<BuyRequest> buyRequests) {
+        this.buyRequests = buyRequests;
     }
 
 }

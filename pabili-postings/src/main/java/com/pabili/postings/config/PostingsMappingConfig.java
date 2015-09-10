@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.pabili.commons.dto.posting.PostingInfo;
+import com.pabili.postings.dto.BuyRequestHeaderInfo;
+import com.pabili.postings.dto.BuyRequestInfo;
+import com.pabili.postings.model.BuyRequest;
+import com.pabili.postings.model.BuyRequestHeader;
 import com.pabili.postings.model.Posting;
 
 /**
@@ -30,6 +34,11 @@ public class PostingsMappingConfig {
                     .fields("name", "title")
                     .fields("location", "location", oneWay())
                     .fields("owner.user.username", "owner", oneWay());
+
+                mapping(BuyRequestHeader.class, BuyRequestHeaderInfo.class)
+                    .fields("buyRequests", "buyRequests", oneWay());
+//                mapping(BuyRequest.class, BuyRequestInfo.class)
+//                    .fields("posting", "posting", oneWay());
             }
         });
     }

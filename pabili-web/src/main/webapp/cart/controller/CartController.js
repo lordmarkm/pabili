@@ -1,6 +1,6 @@
 define(function () {
-  return ['$scope',
-    function ($scope) {
+  return ['$scope', '$modal', 'BuyRequestService',
+    function ($scope, $modal, BuyRequestService) {
 
     $scope.decrement = function (buyRequest, index) {
       buyRequest.quantity = buyRequest.quantity - 1;
@@ -9,5 +9,33 @@ define(function () {
       }
     };
 
+    //When the user clicks the "Create Buy Request Button"
+    $scope.createBuyRequest = function () {
+      $modal.open({
+        templateUrl: 'buyrequest/view/modal_buyrequest_header.html',
+        controller: ['$scope', '$modalInstance', function ($modalScope, $modalInstance) {
+          $modalScope.buyRequestHeader = $scope.cart;
+          $modalScope.buyRequestHeader.title = defaultTitle($modalScope.buyRequestHeader);
+          $modalScope.ok = function () {
+            BuyRequestService.save($modalScope.buyRequestHeader, function () {
+              console.debug('Sending br');
+              alert('Buy request created!');
+            });
+            $modalInstance.close(true);
+          };
+          $modalScope.close = function () {
+            $modalInstance.close(false);
+          };
+        }]
+      });
+    };
+
+    function defaultTitle(cart) {
+      if (cart.buyRequests.length === 1 && cart.buyRequests[0].posting) {
+        return cart.buyRequests[0].quantity + 'x ' + cart.buyRequests[0].posting.title;
+      } else {
+        return cart.buyRequests.length + ' items';
+      }
+    }
   }];
 });

@@ -20,6 +20,10 @@ public class BuyRequest extends BaseEntity {
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "header_id", nullable = false)
+    private BuyRequestHeader buyRequestHeader;
+
+    @ManyToOne
     @JoinColumn(name = "posting_id")
     private Posting posting;
 
@@ -45,6 +49,14 @@ public class BuyRequest extends BaseEntity {
 
     public void setPosting(Posting posting) {
         this.posting = posting;
+    }
+
+    public BuyRequestHeader getBuyRequestHeader() {
+        return buyRequestHeader;
+    }
+
+    public void setBuyRequestHeader(BuyRequestHeader buyRequestHeader) {
+        this.buyRequestHeader = buyRequestHeader;
     }
 
 }

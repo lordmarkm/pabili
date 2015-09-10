@@ -8,11 +8,13 @@ define([
    'profile_own/service/BuyRequestService',
    'posting/service/PostingService',
    'profile_own/service/BuyerProfileService',
-   'profile_own/resolve/BuyerProfileResolve'
+   'profile_own/resolve/BuyerProfileResolve',
+   'core/filter/CreditCardFilter'
 ], function (angular, ProfileRootController, BuyRequestController, PostingController, BuyerProfileController,
     ProfileService,
     BuyRequestService, PostingService, BuyerProfileService,
-    BuyerProfileResolve) {
+    BuyerProfileResolve,
+    CreditCardFilter) {
   console.debug('Configuring profile.module');
   angular.module('profile.module', [])
     .service('ProfileService', ProfileService)

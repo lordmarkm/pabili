@@ -1,0 +1,37 @@
+<div class="modal-header modal-primary">
+  <button type="button" class="close" ng-click="ok()">&times;</button>
+  <h3 class="modal-title">Create Buy Request</h3>
+</div>
+<div class="modal-body">
+  <form class="form form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Title</label>
+      <div class="col-sm-8">
+        <input ng-model="buyRequestHeader.title"
+          placeholder="Title for the buy request"
+          type="text" class="form-control" required />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Description</label>
+      <div class="col-sm-8">
+        <input ng-model="buyRequest.description"
+          placeholder="Short description for the buy request"
+          type="text" class="form-control" />
+      </div>
+    </div>
+  </form>
+  <table class="table table-striped">
+    <caption>Items</caption>
+    <tbody>
+      <tr ng-repeat="buyRequest in buyRequestHeader.buyRequests">
+        <td>{{buyRequest.quantity}}</td>
+        <td>{{buyRequest.title}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary btn-s-xs" ng-click="ok()">Create</button>
+  <button class="btn btn-default btn-s-xs" ng-click="close()">Back</button>
+</div>

@@ -27,12 +27,30 @@
     <dt>Account Name
     <dd>{{profile.buyerProfile.reimbursementAccount.accountName}}
     <dt>Account number
-    <dd>{{profile.buyerProfile.reimbursementAccount.accountNumber}}
+    <dd>{{profile.buyerProfile.reimbursementAccount.accountNumber | creditcard}}
   </dl>
   <div class="text-right">
     <button ui-sref="default.buyer_profile.shipping_addr" class="btn btn-default">Update buyer profile</button>
   </div>
   <hr>
   <h4>Buy Requests</h4>
-  <p ng-if="!buyrequests.length">No buy requests</p>
+  <p ng-if="!buyRequestHeaders.length">No buy requests</p>
+  <div class="row" ng-if="buyRequestHeaders.length">
+      <!-- Buy Requests list start -->
+      <div ng-repeat="buyRequestHeader in buyRequestHeaders" class="col-sm-3">
+        <div class="thumbnail">
+          <img src="imageSource(buyRequestHeader)" alt="No image" class="pointer">
+          <div class="caption">
+            <h4>{{buyRequest}} <br/>
+              <span ng-if="buyRequest.posting">
+                <small><i class="fa fa-location-arrow"></i> {{buyRequest.posting.location.name | limitTo: 20}}</small><br/>
+                <small><i class="fa fa-clock-o"></i> Posted {{buyRequest.posting.dateCreated | fromNow}}</small>
+              </span>
+            </h4>
+            <p>{{buyRequest.description | limitTo: 60}}{{buyRequest.description.length > 60 ? '...' : ''}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Buy Requests list end -->
+  </div>
 </div>

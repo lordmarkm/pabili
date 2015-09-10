@@ -1,17 +1,8 @@
 define(function () {
-  return ['$scope', 'BuyerProfileService', 'profile',
-    function ($scope, BuyerProfileService, profile) {
+  return ['$scope', '$state', 'confirm', 'BuyerProfileService', 'profile', 'banks',
+    function ($scope, $state, confirm, BuyerProfileService, profile, banks) {
 
-    $scope.banks = [
-        {
-          enum: 'BDO',
-          name: 'Banco de Oro (BDO)'
-        },
-        {
-          enum: 'SECURITY_BANK',
-          name: 'Security Bank'
-        }
-    ];
+    $scope.banks = banks;
     $scope.profile = profile;
     $scope.buyerProfile = cloneBuyerProfile(profile);
 
@@ -34,9 +25,17 @@ define(function () {
 
     $scope.saveBuyerProfile = function () {
       console.debug('saving buyer profile: ' + $scope.buyerProfile);
-      BuyerProfileService.save($scope.buyerProfile, function (data) {
-        alert('Saved! ' + JSON.stringify(data));
-      })
+      BuyerProfileService.save($scope.buyerProfile, function (result) {
+
+        confirm.confirm('Update successful', 'Buyer profile has been saved', 'Back to buyer profile')
+          .result.then(function (ok) {
+            if (ok) {
+              $scope.profile.buyerProfile = result;
+              $state.go('default.profile.buyrequests');
+            }
+          });
+
+      });
     };
 
   }];

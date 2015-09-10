@@ -1,10 +1,16 @@
 define([
    'angular',
    'moment',
-   'core/controller/RootController'
-], function (angular, moment, RootController) {
+   'core/controller/RootController',
+   'core/service/GenericConfirmService',
+   'core/service/BankService',
+   'core/filter/CreditCardFilter'
+], function (angular, moment, RootController, GenericConfirmService, BankService, CreditCardFilter) {
   console.debug('Configuring core.module');
   angular.module('core.module', [])
+    .service('confirm', GenericConfirmService)
+    .service('BankService', BankService)
+    .filter('creditcard', CreditCardFilter)
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider

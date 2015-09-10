@@ -82,7 +82,8 @@ require([
     'profile_own/profile.module.js',
     'posting/posting.module.js',
     'profile_others/profile_others.module.js',
-    'cart/cart.module.js'
+    'cart/cart.module.js',
+    'buyrequest/buyrequest.module.js'
   ], function (angular) {
   angular.element().ready(function () {
     angular.bootstrap(document, [
@@ -102,7 +103,8 @@ require([
       'profile.module',
       'posting.module',
       'profile_others.module',
-      'cart.module'
+      'cart.module',
+      'buyrequest.module'
     ]);
   });
 });

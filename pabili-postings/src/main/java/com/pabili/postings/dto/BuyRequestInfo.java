@@ -1,5 +1,7 @@
 package com.pabili.postings.dto;
 
+import org.springframework.core.style.ToStringCreator;
+
 import com.pabili.commons.dto.posting.PostingInfo;
 
 /**
@@ -11,6 +13,15 @@ public class BuyRequestInfo {
     private String description;
     private PostingInfo posting;
     private int quantity;
+
+    public String toString() {
+        return new ToStringCreator(this)
+            .append("title", title)
+            .append("desc", description)
+            .append("posting", posting)
+            .append("qty", quantity)
+            .toString();
+    }
 
     public String getTitle() {
         return title;

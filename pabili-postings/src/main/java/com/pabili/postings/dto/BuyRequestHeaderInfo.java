@@ -2,6 +2,8 @@ package com.pabili.postings.dto;
 
 import java.util.List;
 
+import org.springframework.core.style.ToStringCreator;
+
 import com.pabili.commons.dto.BaseDto;
 
 /**
@@ -12,6 +14,15 @@ public class BuyRequestHeaderInfo extends BaseDto {
     private String title;
     private String description;
     private List<BuyRequestInfo> buyRequests;
+
+    @Override
+    public String toString() {
+        return new ToStringCreator(this)
+            .append("title", title)
+            .append("desc", description)
+            .append("buy requests", buyRequests)
+            .toString();
+    }
 
     public String getTitle() {
         return title;

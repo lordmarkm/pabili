@@ -6,11 +6,11 @@
   > Reimbursement Account
 </div>
 
-<form ng-submit="saveBuyerProfile()" class="form form-horizontal">
+<form name="reimbursementAccountForm" ng-submit="saveBuyerProfile()" class="form form-horizontal">
   <div class="form-group">
     <label class="col-sm-2 control-label">Bank</label>
     <div class="col-sm-4">
-      <select ng-model="buyerProfile.reimbursementAccount.bank" ng-options="bank.enum as bank.name for bank in banks" class="form-control"></select>
+      <select ng-model="buyerProfile.reimbursementAccount.bank" ng-options="bank.code as bank.name for bank in banks" class="form-control"></select>
     </div>
   </div>
   <div class="form-group">
@@ -27,6 +27,6 @@
   </div>
   <div class="col-sm-4 col-sm-push-2 text-right">
     <button ui-sref="default.buyer_profile.shipping_addr" class="btn btn-default">Back</button>
-    <button ng-click="saveBuyerProfile()" class="btn btn-primary">Finish</button>
+    <input type="submit" class="btn btn-primary" value="Finish" />
   </div>
 </form>
