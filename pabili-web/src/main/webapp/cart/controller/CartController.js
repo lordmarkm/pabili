@@ -1,6 +1,6 @@
 define(function () {
-  return ['$scope', '$modal', 'BuyRequestService',
-    function ($scope, $modal, BuyRequestService) {
+  return ['$scope', '$modal', 'BuyRequestHeaderService',
+    function ($scope, $modal, BuyRequestHeaderService) {
 
     $scope.decrement = function (buyRequest, index) {
       buyRequest.quantity = buyRequest.quantity - 1;
@@ -17,8 +17,7 @@ define(function () {
           $modalScope.buyRequestHeader = $scope.cart;
           $modalScope.buyRequestHeader.title = defaultTitle($modalScope.buyRequestHeader);
           $modalScope.ok = function () {
-            BuyRequestService.save($modalScope.buyRequestHeader, function () {
-              console.debug('Sending br');
+            BuyRequestHeaderService.save($modalScope.buyRequestHeader, function () {
               alert('Buy request created!');
             });
             $modalInstance.close(true);

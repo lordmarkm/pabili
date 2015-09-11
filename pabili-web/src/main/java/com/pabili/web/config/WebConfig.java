@@ -29,7 +29,7 @@ import com.pabili.security.SecurityPackageMarker;
 basePackageClasses = SecurityPackageMarker.class)
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    public static final int PAGE_SIZE = 5;
+    public static final int PAGE_SIZE = 8;
 
     //Allow pathvariables with suffixes, i.e. #/profile/lordmarkm@gmail.com
     @Override
