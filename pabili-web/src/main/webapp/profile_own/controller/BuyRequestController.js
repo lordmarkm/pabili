@@ -1,8 +1,8 @@
 define(function () {
-  return ['$scope', 'BuyRequestService',
-    function ($scope, BuyRequestService) {
+  return ['$scope', 'BuyRequestHeaderService',
+    function ($scope, BuyRequestHeaderService) {
 
-    BuyRequestService.get().$promise.then(function (data) {
+    BuyRequestHeaderService.get().$promise.then(function (data) {
       $scope.buyRequestHeaders = data.data;
     });
 

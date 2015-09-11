@@ -27,6 +27,9 @@ public class BuyRequest extends BaseEntity {
     @JoinColumn(name = "posting_id")
     private Posting posting;
 
+    @Column(nullable = false)
+    private int quantity;
+
     public String getTitle() {
         return title;
     }
@@ -57,6 +60,14 @@ public class BuyRequest extends BaseEntity {
 
     public void setBuyRequestHeader(BuyRequestHeader buyRequestHeader) {
         this.buyRequestHeader = buyRequestHeader;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
 }

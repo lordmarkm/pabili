@@ -36,6 +36,7 @@ public class PostingsMappingConfig {
                     .fields("owner.user.username", "owner", oneWay());
 
                 mapping(BuyRequestHeader.class, BuyRequestHeaderInfo.class)
+                    .fields("creator.user.username", "creator")
                     .fields("buyRequests", "buyRequests", oneWay());
 //                mapping(BuyRequest.class, BuyRequestInfo.class)
 //                    .fields("posting", "posting", oneWay());

@@ -5,20 +5,18 @@ define([
    'profile_own/controller/PostingController',
    'profile_own/controller/BuyerProfileController',
    'profile_own/service/ProfileService',
-   'profile_own/service/BuyRequestService',
    'posting/service/PostingService',
    'profile_own/service/BuyerProfileService',
    'profile_own/resolve/BuyerProfileResolve',
    'core/filter/CreditCardFilter'
 ], function (angular, ProfileRootController, BuyRequestController, PostingController, BuyerProfileController,
     ProfileService,
-    BuyRequestService, PostingService, BuyerProfileService,
+    PostingService, BuyerProfileService,
     BuyerProfileResolve,
     CreditCardFilter) {
   console.debug('Configuring profile.module');
   angular.module('profile.module', [])
     .service('ProfileService', ProfileService)
-    .service('BuyRequestService', BuyRequestService)
     .service('PostingService', PostingService)
     .service('BuyerProfileService', BuyerProfileService)
     .config(['$stateProvider', function ($stateProvider) {
