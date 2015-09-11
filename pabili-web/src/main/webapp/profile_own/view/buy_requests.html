@@ -39,15 +39,27 @@
       <!-- Buy Requests list start -->
       <div ng-repeat="buyRequestHeader in buyRequestHeaders" class="col-sm-3">
         <div class="thumbnail">
-          <img src="imageSource(buyRequestHeader)" alt="No image" class="pointer">
+          <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image" class="pointer">
           <div class="caption">
-            <h4>{{buyRequest}} <br/>
-              <span ng-if="buyRequest.posting">
-                <small><i class="fa fa-location-arrow"></i> {{buyRequest.posting.location.name | limitTo: 20}}</small><br/>
-                <small><i class="fa fa-clock-o"></i> Posted {{buyRequest.posting.dateCreated | fromNow}}</small>
-              </span>
-            </h4>
-            <p>{{buyRequest.description | limitTo: 60}}{{buyRequest.description.length > 60 ? '...' : ''}}</p>
+            <h4>{{buyRequestHeader.title}}</h4>
+            <p>{{buyRequestHeader.description ? buyRequestHeader.description : 'No description provided' | limitTo: 60}}{{buyRequest.description.length > 60 ? '...' : ''}}</p>
+          </div>
+          <hr>
+          <div ng-repeat="buyRequest in buyRequestHeader.buyRequests">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="thumbnail">
+                    <img src="{{buyRequest.posting && buyRequest.posting.imageUrl ? buyRequest.posting.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div>{{buyRequest.quantity}} {{buyRequest.title}}</div>
+                <div ng-if="buyRequest.posting">
+                  <div><small class="text-muted"><i class="fa fa-location-arrow"></i> {{buyRequest.posting.location.name}}</small></div>
+                  <div><small class="text-muted">{{buyRequest.posting.price | currency: '₱ '}}</small></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
