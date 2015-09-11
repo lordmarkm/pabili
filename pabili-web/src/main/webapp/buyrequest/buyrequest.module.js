@@ -1,8 +1,12 @@
 define([
    'angular',
    'buyrequest/controller/BuyRequestRootController',
-   'buyrequest/service/BuyRequestHeaderService'
-], function (angular, BuyRequestRootController, BuyRequestHeaderService) {
+   'buyrequest/controller/BuyRequestHeaderDetailsController',
+   'buyrequest/service/BuyRequestHeaderService',
+   'buyrequest/resolve/BuyRequestHeaderDetailsResolve'
+], function (angular, BuyRequestRootController, BuyRequestHeaderDetailsController,
+    BuyRequestHeaderService,
+    BuyRequestHeaderDetailsResolve) {
   console.debug('Configuring buyrequest.module');
   angular.module('buyrequest.module', [])
     .service('BuyRequestHeaderService', BuyRequestHeaderService)
@@ -16,6 +20,8 @@ define([
       })
       .state('default.buyrequest.details', {
         url: '/{buyRequestHeaderId}/{title}',
+        controller: BuyRequestHeaderDetailsController,
+        resolve: BuyRequestHeaderDetailsResolve,
         templateUrl: 'buyrequest/view/header_details.html'
       });
 

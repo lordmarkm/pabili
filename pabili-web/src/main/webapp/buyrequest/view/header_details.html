@@ -4,15 +4,14 @@
   > <a ui-sref="default.profile_others.buyrequests({username: buyRequestHeader.creator})">{{buyRequestHeader.creator}}'s Buy Requests</a>
   > {{buyRequestHeader.title}}
 </div>
-
+{{buyRequestHeader}}
 <div class="row">
   <div class="col-sm-3">
     <div class="thumbnail">
-      <img src="{{post.imageUrl ? post.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+      <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image">
       <div class="caption">
-        <h4>{{post.title}} <br/>
-          <small><i class="glyphicon glyphicon-map-marker"></i> {{post.location.name | limitTo: 20}}</small><br/>
-          <small><i class="fa fa-clock-o"></i>&nbsp; Posted {{post.dateCreated | fromNow}}</small>
+        <h4>{{buyRequestHeader.title}} <br/>
+          <small><i class="fa fa-clock-o"></i>&nbsp; Posted {{buyRequestHeader.dateCreated | fromNow}}</small>
         </h4>
         <p>{{post.description | limitTo: 60}}{{post.description.length > 60 ? '...' : ''}}</p>
       </div>

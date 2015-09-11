@@ -33,6 +33,12 @@ public class BuyRequestResource extends GenericController {
     @Autowired
     private BuyRequestHeaderService service;
 
+    @RequestMapping(method = GET, params = "buyRequestHeaderId")
+    public ResponseEntity<BuyRequestHeaderInfo> getById(@RequestParam Long buyRequestHeaderId) {
+        LOG.info("Buy request header requested. id={}", buyRequestHeaderId);
+        return new ResponseEntity<>(service.findInfo(buyRequestHeaderId), OK);
+    }
+
     @RequestMapping(method = GET)
     public ResponseEntity<PageInfo<BuyRequestHeaderInfo>> buyRequests(
             Principal principal,

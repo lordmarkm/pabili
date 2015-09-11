@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 
@@ -14,6 +15,7 @@ import org.springframework.data.repository.NoRepositoryBean;
  * @param <E> Entity
  */
 @NoRepositoryBean
+@Transactional
 public abstract class BaseJpaCustomServiceImpl<E, D, R extends BaseJpaService<E>> extends MappingService<E, D> {
 
     @Autowired
