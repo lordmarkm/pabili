@@ -33,7 +33,7 @@ define([
         access: 'ROLE_USER'
       })
       .state('default.profile.buyrequests', {
-        url: '/postings',
+        url: '/buyrequests',
         controller: BuyRequestController,
         templateUrl: 'profile_own/view/buy_requests.html',
         access: 'ROLE_USER'

@@ -4,7 +4,6 @@
   > <a ui-sref="default.profile_others.buyrequests({username: buyRequestHeader.creator})">{{buyRequestHeader.creator}}'s Buy Requests</a>
   > {{buyRequestHeader.title}}
 </div>
-{{buyRequestHeader}}
 <div class="row">
   <div class="col-sm-3">
     <div class="thumbnail">
@@ -18,16 +17,48 @@
     </div>
   </div>
   <div class="col-sm-6">
-    <h4><small><i class="fa fa-pencil"></i> {{post.dateUpdated ? post.dateUpdated : post.dateCreated | date}}</small></h4>
-    <h3>{{post.title}}</h3>
+    <h4><small><i class="fa fa-pencil"></i> {{buyRequestHeader.dateUpdated ? buyRequestHeader.dateUpdated : buyRequestHeader.dateCreated | date}}</small></h4>
+    <h3>{{buyRequestHeader.title}}</h3>
     <h4>
-      <small><i class="fa fa-user"></i>&nbsp; {{post.owner}}</small><br/>
-      <small><i class="glyphicon glyphicon-map-marker"></i> {{post.location.name | limitTo: 20}}</small>
+      <small><i class="fa fa-user"></i>&nbsp; {{buyRequestHeader.creator}}</small>
     </h4>
     <hr />
-    <p>{{post.description}}</p>
+    <p><strong>Description</strong></p>
+    <p ng-if="buyRequestHeader.description">{{buyRequestHeader.description}}</p>
     <hr />
-    <span class="btn btn-primary">Create buy order</span>
-    <span class="btn btn-success"><i class="fa fa-shopping-cart"> Add to cart</i></span>
+    
+    <!-- Items -->
+    <p><strong>Items</strong></p>
+    <div ng-repeat="buyRequest in buyRequestHeader.buyRequests" class="row">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+            <img src="{{buyRequest.posting && buyRequest.posting.imageUrl ? buyRequest.posting.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div>{{buyRequest.quantity}}x {{buyRequest.title}}</div>
+        <div ng-if="buyRequest.posting">
+          <div><small class="text-muted"><i class="fa fa-location-arrow"></i> {{buyRequest.posting.location.name}}</small></div>
+          <div><small class="text-muted">{{buyRequest.posting.price | currency: '₱ '}}</small></div>
+        </div>
+      </div>
+    </div>
+    <hr />
+
+    <!-- User actions for anonymous users -->
+    <div ng-if="!authenticated()">
+      <p>You must be logged in to message the owner or create a shipping proposal. Click <a ui-sref="default.login">here</a> to login or register.
+    </div>
+
+    <!-- User actions other users -->
+    <div ng-if="authenticated() && buyRequestHeader.creator != principal.username">
+      <span class="btn btn-primary"><i class="fa fa-envelope"></i> Message Requestor / Create Proposal</span>
+    </div>
+
+    <!-- User actions for requestor -->
+    <div ng-if="authenticated() && buyRequestHeader.creator === principal.username">
+      <span class="btn btn-success"><i class="fa fa-pencil"></i> Edit buy request</span>
+      <span class="btn btn-default"><i class="fa fa-close"></i> Cancel buy request</span>
+    </div>
   </div>
 </div>

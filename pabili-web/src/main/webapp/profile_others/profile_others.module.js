@@ -5,9 +5,10 @@
 define([
    'angular',
    'profile_others/controller/OthersProfileRootController',
+   'profile_others/controller/BuyRequestController',
    'profile_others/controller/PostingController',
    'profile_own/service/ProfileService'
-], function (angular, OthersProfileRootController, PostingController, ProfileService) {
+], function (angular, OthersProfileRootController, BuyRequestController, PostingController, ProfileService) {
   console.debug('Configuring profile_others.module');
   angular.module('profile_others.module', [])
     .service('ProfileService', ProfileService)
@@ -22,6 +23,11 @@ define([
       .state('default.profile_others.summary', {
         url: '',
         templateUrl: 'profile_others/view/summary.html'
+      })
+      .state('default.profile_others.buyrequests', {
+        url: '/buyrequests',
+        controller: BuyRequestController,
+        templateUrl: 'profile_others/view/buy_requests.html'
       })
       .state('default.profile_others.for_sale', {
         url: '/postings',

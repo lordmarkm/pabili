@@ -48,10 +48,10 @@ public class BuyRequestResource extends GenericController {
         PageInfo<BuyRequestHeaderInfo> results = null;
         //Own posts
         if (null == username && null != principal) {
-            LOG.info("Finding own posts. user={}, page={}", principal.getName(), page);
+            LOG.info("Finding own buy requests. user={}, page={}", principal.getName(), page);
             results = service.findByCreator(principal.getName(), page);
         } else if (null != username) {
-            LOG.info("Finding user posts. user={}, page={}", name(principal), page);
+            LOG.info("Finding user buy requests. user={}, page={}", name(principal), page);
             results = service.findByCreator(username, page);
         }
         return new ResponseEntity<>(results, OK);
