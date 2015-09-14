@@ -1,0 +1,85 @@
+<div class="alert alert-info">
+  <img src="/images/squirrel.png" height="16px"/>
+  <a ui-sref="default.browse"> Pabili</a>
+  > <a ui-sref="default.profile_others.buyrequests({username: buyRequestHeader.creator})">{{buyRequestHeader.creator}}'s Buy Requests</a>
+  > <a ui-sref="default.buyrequest.details({buyRequestHeaderId: buyRequestHeader.id, title: convertToSlug(buyRequestHeader.title)})">{{buyRequestHeader.title}}</a>
+  > Conversation with {{buyRequestHeader.creator}}
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="thumbnail">
+      <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image">
+      <div class="caption">
+        <h4>{{buyRequestHeader.title}} <br/>
+          <small><i class="fa fa-clock-o"></i>&nbsp; Posted {{buyRequestHeader.dateCreated | fromNow}}</small>
+        </h4>
+        <p>{{post.description | limitTo: 60}}{{post.description.length > 60 ? '...' : ''}}</p>
+      </div>
+      <div ng-repeat="buyRequest in buyRequestHeader.buyRequests" class="mt5">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="thumbnail">
+                <img src="{{buyRequest.posting && buyRequest.posting.imageUrl ? buyRequest.posting.imageUrl : '/images/no_image.jpg'}}" alt="No image">
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div>{{buyRequest.quantity}}x {{buyRequest.title}}</div>
+            <div ng-if="buyRequest.posting">
+              <div><small class="text-muted"><i class="fa fa-location-arrow"></i> {{buyRequest.posting.location.name}}</small></div>
+              <div><small class="text-muted">{{buyRequest.posting.price | currency: '₱ '}}</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <h4><small><i class="fa fa-pencil"></i> {{buyRequestHeader.dateUpdated ? buyRequestHeader.dateUpdated : buyRequestHeader.dateCreated | date}}</small></h4>
+    <h3>{{buyRequestHeader.title}}</h3>
+    <h4>
+      <small><i class="fa fa-user"></i>&nbsp; {{buyRequestHeader.creator}}</small>
+    </h4>
+    <hr />
+    <p><strong>Description</strong></p>
+    <p ng-if="buyRequestHeader.description">{{buyRequestHeader.description}}</p>
+    <hr />
+
+    <!-- Proposal actions for gopher -->
+    <div ng-if="authenticated() && buyRequestHeader.creator != principal.username">
+      <p><strong>Buy Proposal</strong></p>
+      <p>You have not created a proposal for this request.</p>
+      <span class="btn btn-primary"><i class="fa fa-money"></i> Create Proposal</span>
+    </div>
+    <hr />
+
+    <!-- Commenting actions -->
+    <div>
+      <p><strong>Messages</strong></p>
+      <p class="text-muted">Messages posted here are only visible to you and the creator of this buy request.</p>
+      <p ng-if="!messages.length">No messages yet</p>
+      <div class="row">
+        <div class="col-sm-10">
+          <p class="bubble-me pull-right">Ridiculous. These are not for sale!</p>
+        </div>
+        <div class="col-sm-2 thumbnail">
+          <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2 thumbnail">
+          <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image">
+        </div>
+        <div class="col-sm-10">
+          <p class="bubble-you">Messages posted here are only visible to you and the creator of this buy request. Messages posted here are only visible to you and the creator of this buy request.Messages posted here are only visible to you and the creator of this buy request.Messages posted here are only visible to you and the creator of this buy request.</p>
+        </div>
+      </div>
+      <form class="commentform">
+        <div class="form-group">
+          <textarea rows="4" class="form-control"></textarea>
+        </div>
+        <span class="btn btn-primary">Post</span>
+      </form>
+    </div>
+
+  </div>
+</div>

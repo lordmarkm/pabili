@@ -56,3 +56,86 @@ html {
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
+
+.bubble-me
+{
+position: relative;
+width: 70%;
+min-height: 90px;
+padding: 0px;
+background: #B8B8FF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #7F7F7F solid 2px;
+padding: 10px;
+}
+
+.bubble-me:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 0 15px 15px;
+border-color: transparent #B8B8FF;
+display: block;
+width: 0;
+z-index: 1;
+right: -15px;
+top: 16px;
+}
+
+.bubble-me:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 16px 0 16px 16px;
+border-color: transparent #7F7F7F;
+display: block;
+width: 0;
+z-index: 0;
+right: -18px;
+top: 15px;
+}
+
+.bubble-you
+{
+position: relative;
+width: 70%;
+min-height: 90px;
+padding: 10px;
+background: #DAD966;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border: #A1D1AF solid 1px;
+}
+
+.bubble-you:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 15px 0;
+border-color: transparent #DAD966;
+display: block;
+width: 0;
+z-index: 1;
+left: -15px;
+top: 13px;
+}
+
+.bubble-you:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 15px 15px 15px 0;
+border-color: transparent #A1D1AF;
+display: block;
+width: 0;
+z-index: 0;
+left: -16px;
+top: 13px;
+}

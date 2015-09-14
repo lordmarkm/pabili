@@ -52,7 +52,7 @@
 
     <!-- User actions other users -->
     <div ng-if="authenticated() && buyRequestHeader.creator != principal.username">
-      <span class="btn btn-primary"><i class="fa fa-envelope"></i> Message Requestor / Create Proposal</span>
+      <span ui-sref="default.buyrequest.convo_gopher({buyRequestHeaderId: buyRequestHeader.id, title: convertToSlug(buyRequestHeader.title)})" class="btn btn-primary"><i class="fa fa-envelope"></i> Message Requestor / Create Proposal</span>
     </div>
 
     <!-- User actions for requestor -->
