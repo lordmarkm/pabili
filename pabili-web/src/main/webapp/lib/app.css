@@ -57,20 +57,6 @@ html {
   display: none !important;
 }
 
-.bubble-me
-{
-position: relative;
-width: 70%;
-min-height: 90px;
-padding: 0px;
-background: #B8B8FF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-border: #7F7F7F solid 2px;
-padding: 10px;
-}
-
 .bubble-me:after 
 {
 content: '';
@@ -99,17 +85,30 @@ right: -18px;
 top: 15px;
 }
 
+.bubble-me
+{
+position: relative;
+width: 70%;
+min-height: 90px;
+background: #B8B8FF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #7F7F7F solid 2px;
+padding: 10px 10px 20px 10px;
+}
+
 .bubble-you
 {
 position: relative;
 width: 70%;
 min-height: 90px;
-padding: 10px;
 background: #DAD966;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
 border: #A1D1AF solid 1px;
+padding: 10px 10px 20px 10px;
 }
 
 .bubble-you:after 

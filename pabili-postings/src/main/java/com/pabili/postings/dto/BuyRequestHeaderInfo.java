@@ -15,6 +15,7 @@ public class BuyRequestHeaderInfo extends BaseDto {
     private String description;
     private String creator;
     private List<BuyRequestInfo> buyRequests;
+    private List<BuyRequestMessageInfo> conversations;
 
     @Override
     public String toString() {
@@ -23,6 +24,7 @@ public class BuyRequestHeaderInfo extends BaseDto {
             .append("desc", description)
             .append("owner", creator)
             .append("buy requests", buyRequests)
+            .append("conversations", conversations)
             .toString();
     }
 
@@ -51,6 +53,14 @@ public class BuyRequestHeaderInfo extends BaseDto {
 
     public void setCreator(String creator) {
         this.creator = creator;
+    }
+
+    public List<BuyRequestMessageInfo> getConversations() {
+        return conversations;
+    }
+
+    public void setConversations(List<BuyRequestMessageInfo> conversations) {
+        this.conversations = conversations;
     }
 
 }

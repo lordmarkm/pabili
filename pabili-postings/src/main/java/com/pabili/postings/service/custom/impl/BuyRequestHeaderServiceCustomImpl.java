@@ -17,6 +17,7 @@ import com.pabili.postings.dto.BuyRequestInfo;
 import com.pabili.postings.model.BuyRequest;
 import com.pabili.postings.model.BuyRequestHeader;
 import com.pabili.postings.service.BuyRequestHeaderService;
+import com.pabili.postings.service.BuyRequestMessageService;
 import com.pabili.postings.service.custom.BuyRequestHeaderServiceCustom;
 
 @Transactional
@@ -26,6 +27,16 @@ public class BuyRequestHeaderServiceCustomImpl
 
     @Autowired
     private UserProfileService userProfileService;
+
+    @Autowired
+    private BuyRequestMessageService buyRequestMessageService;
+
+    @Override
+    public BuyRequestHeaderInfo findInfo(Long id) {
+        BuyRequestHeaderInfo buyRequestHeaderInfo = super.findInfo(id);
+        buyRequestMessageService.addConversations(buyRequestHeaderInfo);
+        return buyRequestHeaderInfo;
+    }
 
     @Override
     public BuyRequestHeaderInfo saveInfo(String name, BuyRequestHeaderInfo buyRequestHeaderInfo) {
@@ -51,7 +62,11 @@ public class BuyRequestHeaderServiceCustomImpl
     public PageInfo<BuyRequestHeaderInfo> findByCreator(String username,
             Pageable page) {
         Page<BuyRequestHeader> results = service.findByCreator_User_Username(username, page);
-        return PageInfo.toPageInfo(results, toDto(results.getContent()));
+        List<BuyRequestHeaderInfo> resultsInfo = toDto(results.getContent());
+        for (BuyRequestHeaderInfo buyRequestHeaderInfo : resultsInfo) {
+            buyRequestMessageService.addConversations(buyRequestHeaderInfo);
+        }
+        return PageInfo.toPageInfo(results, resultsInfo);
     }
 
 }

@@ -57,27 +57,35 @@
       <p><strong>Messages</strong></p>
       <p class="text-muted">Messages posted here are only visible to you and the creator of this buy request.</p>
       <p ng-if="!messages.length">No messages yet</p>
-      <div class="row">
-        <div class="col-sm-10">
-          <p class="bubble-me pull-right">Ridiculous. These are not for sale!</p>
+      <div ng-repeat="msg in messages" class="mt10">
+        <div class="row" ng-if="msg.sender === msg.gopher">
+          <div class="col-sm-10">
+            <div class="bubble-me pull-right">
+              <pre>{{msg.message}}</pre>
+              <div style="position: absolute; bottom: 0;"><small class="text-muted">Sent {{msg.dateCreated | fromNow}}</small></div>
+            </div>
+          </div>
+          <div class="col-sm-2 thumbnail" style="border: 0;">
+            <img src="/images/gopher_placeholder.jpg" alt="No image">
+          </div>
         </div>
-        <div class="col-sm-2 thumbnail">
-          <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image">
+        <div class="row" ng-if="msg.sender != msg.gopher">
+          <div class="col-sm-2 thumbnail" style="border: 0;">
+            <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image">
+          </div>
+          <div class="col-sm-10">
+            <div class="bubble-you">
+              <pre>{{msg.message}}</pre>
+              <div style="position: absolute; bottom: 0;"><small class="text-muted">Sent {{msg.dateCreated | fromNow}}</small></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-2 thumbnail">
-          <img src="{{headerImageSource(buyRequestHeader)}}" alt="No image">
-        </div>
-        <div class="col-sm-10">
-          <p class="bubble-you">Messages posted here are only visible to you and the creator of this buy request. Messages posted here are only visible to you and the creator of this buy request.Messages posted here are only visible to you and the creator of this buy request.Messages posted here are only visible to you and the creator of this buy request.</p>
-        </div>
-      </div>
-      <form class="commentform">
+      <form ng-submit="postMessage()" class="commentform mt20">
         <div class="form-group">
-          <textarea rows="4" class="form-control"></textarea>
+          <textarea ng-model="message" rows="4" class="form-control" placeholder="Post a comment..."></textarea>
         </div>
-        <span class="btn btn-primary">Post</span>
+        <input type="submit" value="Post" class="btn btn-primary" />
       </form>
     </div>
 

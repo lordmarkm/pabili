@@ -45,6 +45,27 @@
     </div>
     <hr />
 
+    <!-- Conversations, only if requestor -->
+    <section ng-if="authenticated() && buyRequestHeader.creator === principal.username">
+      <p><strong>Conversations</strong></p>
+      <p ng-if="!buyRequestHeader.conversations.length">There have been no messages for this buy request</p>
+      <div ng-repeat="convo in buyRequestHeader.conversations" ui-sref="default.buyrequest.convo_buyer({buyRequestHeaderId: buyRequestHeader.id, title: convertToSlug(buyRequestHeader.title), gopherUsername: convo.gopher})" class="row mt10 pointer">
+        <div class="col-sm-2">
+          <div class="thumbnail">
+            <img src="/images/gopher_placeholder.jpg" alt="No image">
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <div><i class="fa fa-user"></i> {{convo.gopher}}</div>
+          <div><small class="text-muted"><i class="fa fa-envelope"></i> {{convo.message | limitTo: 60}}{{convo.message.length > 60 ? '...' : ''}}</small></div>
+          <div><small class="text-muted"><i class="fa fa-clock-o"></i> Last message {{convo.dateCreated | fromNow}}</small></div>
+          <div><small class="text-muted"><i class="fa fa-money"></i> No proposal</small></div>
+          <hr ng-if="!$last" >
+        </div>
+      </div>
+      <hr />
+    </section>
+
     <!-- User actions for anonymous users -->
     <div ng-if="!authenticated()">
       <p>You must be logged in to message the owner or create a shipping proposal. Click <a ui-sref="default.login">here</a> to login or register.
