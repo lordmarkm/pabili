@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pabili.commons.web.GenericController;
@@ -33,6 +34,13 @@ public class BuyRequestMessageResource extends GenericController {
     public ResponseEntity<List<BuyRequestMessageInfo>> getMessages(Principal principal,
             @PathVariable Long buyRequestHeaderId) {
         return new ResponseEntity<>(service.findInfoByConversation(buyRequestHeaderId, name(principal)), OK);
+    }
+
+    @RequestMapping(method = GET, params = {"gopherUsername", "role=buyer"})
+    public ResponseEntity<List<BuyRequestMessageInfo>> getMessagesForBuyer(Principal principal,
+            @RequestParam String gopherUsername,
+            @PathVariable Long buyRequestHeaderId) {
+        return new ResponseEntity<>(service.findInfoByConversation(buyRequestHeaderId, gopherUsername), OK);
     }
 
     @RequestMapping(method = POST)

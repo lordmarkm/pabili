@@ -5,7 +5,8 @@ define(function () {
     }],
     messages: ['BuyRequestMessageService', '$stateParams', function (BuyRequestMessageService, $stateParams) {
       return BuyRequestMessageService.query({
-        role: 'gopher',
+        role: 'buyer',
+        gopherUsername: $stateParams.gopherUsername,
         buyRequestHeaderId: $stateParams.buyRequestHeaderId
       })
     }]
