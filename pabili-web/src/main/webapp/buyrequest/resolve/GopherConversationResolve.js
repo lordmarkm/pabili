@@ -7,7 +7,10 @@ define(function () {
       return BuyRequestMessageService.query({
         role: 'gopher',
         buyRequestHeaderId: $stateParams.buyRequestHeaderId
-      })
+      });
+    }],
+    shippingChannels: ['ShippingChannelService', function (ShippingChannelService) {
+      return ShippingChannelService.query();
     }]
   };
 });

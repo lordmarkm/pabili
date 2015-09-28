@@ -1,0 +1,50 @@
+<div class="modal-header modal-primary">
+  <button type="button" class="close" ng-click="close()">&times;</button>
+  <h3 class="modal-title">Create Proposal</h3>
+</div>
+<form name="proposalForm" ng-submit="ok()" class="form form-horizontal">
+<div class="modal-body">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Items total amount</label>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">₱</span>
+        <input ng-model="proposal.totalItemsAmount"
+          type="number" class="form-control" required min="1" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Gopher fee</label>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">₱</span>
+        <input ng-model="proposal.gopherFee"
+          type="number" class="form-control" required min="0" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Shipping channel</label>
+    <div class="col-sm-6">
+      <select ng-options="shippingChannel.code as shippingChannel.name for shippingChannel in shippingChannels"
+        ng-model="proposal.shippingChannel" class="form-control">
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Shipping cost</label>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <span class="input-group-addon">₱</span>
+        <input ng-model="proposal.shippingAmount"
+          type="number" class="form-control" required min="0" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary btn-s-xs" ng-click="proposalForm.$submit()">Create</button>
+  <button class="btn btn-default btn-s-xs" ng-click="close()">Back</button>
+</div>
+</form>

@@ -2,21 +2,23 @@ define([
    'angular',
    'buyrequest/controller/BuyRequestRootController',
    'buyrequest/controller/BuyRequestHeaderDetailsController',
-   'buyrequest/controller/BuyRequestHeaderConversationController',
+   'buyrequest/controller/GopherConversationController',
    'buyrequest/controller/BuyerConversationController',
    'buyrequest/service/BuyRequestHeaderService',
    'buyrequest/service/BuyRequestMessageService',
+   'buyrequest/service/ShippingChannelService',
    'buyrequest/resolve/BuyRequestHeaderDetailsResolve',
    'buyrequest/resolve/GopherConversationResolve',
    'buyrequest/resolve/BuyerConversationResolve'
 ], function (angular, BuyRequestRootController, BuyRequestHeaderDetailsController,
-    BuyRequestHeaderConversationController, BuyerConversationController,
-    BuyRequestHeaderService, BuyRequestMessageService,
+    GopherConversationController, BuyerConversationController,
+    BuyRequestHeaderService, BuyRequestMessageService, ShippingChannelService,
     BuyRequestHeaderDetailsResolve, GopherConversationResolve, BuyerConversationResolve) {
   console.debug('Configuring buyrequest.module');
   angular.module('buyrequest.module', [])
     .service('BuyRequestHeaderService', BuyRequestHeaderService)
     .service('BuyRequestMessageService', BuyRequestMessageService)
+    .service('ShippingChannelService', ShippingChannelService)
     .config(['$stateProvider', function ($stateProvider) {
 
       $stateProvider.state('default.buyrequest', {
@@ -33,7 +35,7 @@ define([
       })
       .state('default.buyrequest.convo_gopher', {
         url: '/convo_g/{buyRequestHeaderId}/{title}',
-        controller: BuyRequestHeaderConversationController,
+        controller: GopherConversationController,
         templateUrl: 'buyrequest/view/convo_gopher.html',
         resolve: GopherConversationResolve,
         access: 'ROLE_USER'
