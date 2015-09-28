@@ -7,18 +7,20 @@ define([
    'buyrequest/service/BuyRequestHeaderService',
    'buyrequest/service/BuyRequestMessageService',
    'buyrequest/service/ShippingChannelService',
+   'buyrequest/service/ProposalService',
    'buyrequest/resolve/BuyRequestHeaderDetailsResolve',
    'buyrequest/resolve/GopherConversationResolve',
    'buyrequest/resolve/BuyerConversationResolve'
 ], function (angular, BuyRequestRootController, BuyRequestHeaderDetailsController,
     GopherConversationController, BuyerConversationController,
-    BuyRequestHeaderService, BuyRequestMessageService, ShippingChannelService,
+    BuyRequestHeaderService, BuyRequestMessageService, ShippingChannelService, ProposalService,
     BuyRequestHeaderDetailsResolve, GopherConversationResolve, BuyerConversationResolve) {
   console.debug('Configuring buyrequest.module');
   angular.module('buyrequest.module', [])
     .service('BuyRequestHeaderService', BuyRequestHeaderService)
     .service('BuyRequestMessageService', BuyRequestMessageService)
     .service('ShippingChannelService', ShippingChannelService)
+    .service('ProposalService', ProposalService)
     .config(['$stateProvider', function ($stateProvider) {
 
       $stateProvider.state('default.buyrequest', {

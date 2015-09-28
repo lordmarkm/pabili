@@ -1,11 +1,12 @@
 define(function () {
-  return ['$scope', '$modal', 'buyRequestHeader', 'messages', 'shippingChannels', 'BuyRequestMessageService', 'ProposalService',
-    function ($scope, $modal, buyRequestHeader, messages, shippingChannels, BuyRequestMessageService, ProposalService) {
+  return ['$scope', '$modal', 'buyRequestHeader', 'messages', 'shippingChannels', 'proposals', 'BuyRequestMessageService', 'ProposalService',
+    function ($scope, $modal, buyRequestHeader, messages, shippingChannels, proposals, BuyRequestMessageService, ProposalService) {
 
     //Expose the posting from the resolve
     console.debug('Got header=' + JSON.stringify(buyRequestHeader));
     $scope.buyRequestHeader = buyRequestHeader;
     $scope.messages = messages;
+    $scope.proposals = proposals;
 
     $scope.postMessage = function () {
       BuyRequestMessageService.save({
@@ -22,7 +23,7 @@ define(function () {
     $scope.createProposal = function () {
       proposalModal().result.then(function (proposal) {
         proposal.buyRequestHeader = buyRequestHeader;
-        ProposalService.save(proposal);
+        $scope.proposals.push(ProposalService.save(proposal));
       });
     };
 

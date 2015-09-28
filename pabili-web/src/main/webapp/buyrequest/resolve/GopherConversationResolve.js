@@ -11,6 +11,9 @@ define(function () {
     }],
     shippingChannels: ['ShippingChannelService', function (ShippingChannelService) {
       return ShippingChannelService.query();
+    }],
+    proposals: ['$stateParams', 'ProposalService', function ($stateParams, ProposalService) {
+      return ProposalService.getGopherProposals({buyRequestHeaderId: $stateParams.buyRequestHeaderId});
     }]
   };
 });

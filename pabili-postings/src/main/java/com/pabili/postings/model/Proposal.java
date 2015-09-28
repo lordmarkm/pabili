@@ -26,11 +26,11 @@ public class Proposal extends BaseEntity {
     private BuyRequestHeader buyRequestHeader;
 
     @ManyToOne
-    @JoinColumn(name = "gopher_id")
+    @JoinColumn(name = "gopher_id", nullable = false)
     private UserProfile gopher;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private ProposalStatus status;
 
     @Column(name = "items_amt", nullable = false)
